@@ -24,6 +24,8 @@
 		6CB18C842740E73000C5F54F /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB18C822740E73000C5F54F /* ChatTableViewCell.swift */; };
 		6CB18C852740E73000C5F54F /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB18C832740E73000C5F54F /* ChatTableViewCell.xib */; };
 		6CB18C872740E80300C5F54F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB18C862740E80300C5F54F /* ChatViewController.swift */; };
+		6CEB06F127534E8F0067AA74 /* InputAccesoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CEB06F027534E8F0067AA74 /* InputAccesoryView.xib */; };
+		6CEB06F327534FD70067AA74 /* InputAccesoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEB06F227534FD70067AA74 /* InputAccesoryView.swift */; };
 		7DECB0BAC8350BB2277B0333 /* Pods_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52B6F50D14E73170BBDEDD9 /* Pods_Todo.framework */; };
 		AEEF58130B16C582B63BC536 /* Pods_Todo_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0766B3E95E94F7F561E30DEF /* Pods_Todo_TodoUITests.framework */; };
 		BD372A9B47034CA9912346D6 /* Pods_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C117EF4A4E30A111DF68BEE /* Pods_TodoTests.framework */; };
@@ -74,6 +76,8 @@
 		6CB18C822740E73000C5F54F /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		6CB18C832740E73000C5F54F /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		6CB18C862740E80300C5F54F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		6CEB06F027534E8F0067AA74 /* InputAccesoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputAccesoryView.xib; sourceTree = "<group>"; };
+		6CEB06F227534FD70067AA74 /* InputAccesoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAccesoryView.swift; sourceTree = "<group>"; };
 		9D62534CF9899493471724D6 /* Pods-Todo-TodoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo-TodoUITests.release.xcconfig"; path = "Target Support Files/Pods-Todo-TodoUITests/Pods-Todo-TodoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB9B6175E2CFBFB9E74BF969 /* Pods-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.release.xcconfig"; path = "Target Support Files/Pods-Todo/Pods-Todo.release.xcconfig"; sourceTree = "<group>"; };
 		BF4B3BE3C50731A73526C919 /* Pods-TodoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoTests.release.xcconfig"; path = "Target Support Files/Pods-TodoTests/Pods-TodoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				6C73B3452740B5C800BB8E27 /* CollectionViewCell.xib */,
 				6CB18C822740E73000C5F54F /* ChatTableViewCell.swift */,
 				6CB18C832740E73000C5F54F /* ChatTableViewCell.xib */,
+				6CEB06F227534FD70067AA74 /* InputAccesoryView.swift */,
+				6CEB06F027534E8F0067AA74 /* InputAccesoryView.xib */,
 				6C0653AB2740AD7E0068508C /* Info.plist */,
 				6C0653A32740AD7B0068508C /* Todo.xcdatamodeld */,
 			);
@@ -309,6 +315,7 @@
 				6C73B34B2740D32000BB8E27 /* GoogleService-Info.plist in Resources */,
 				6C0653A22740AD7B0068508C /* Main.storyboard in Resources */,
 				6C73B3472740B5C800BB8E27 /* CollectionViewCell.xib in Resources */,
+				6CEB06F127534E8F0067AA74 /* InputAccesoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +445,7 @@
 			files = (
 				6C73B3462740B5C800BB8E27 /* CollectionViewCell.swift in Sources */,
 				6C73B34D2740D61B00BB8E27 /* DisplayGroupsViewController.swift in Sources */,
+				6CEB06F327534FD70067AA74 /* InputAccesoryView.swift in Sources */,
 				6C06539F2740AD7B0068508C /* ViewController.swift in Sources */,
 				6C06539B2740AD7B0068508C /* AppDelegate.swift in Sources */,
 				6C06539D2740AD7B0068508C /* SceneDelegate.swift in Sources */,

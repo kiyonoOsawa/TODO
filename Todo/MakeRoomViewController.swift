@@ -20,7 +20,7 @@ class MakeRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileButton.layer.cornerRadius = 75
+        profileButton.layer.cornerRadius = 50
         profileButton.layer.borderWidth = 1
         profileButton.layer.borderColor = UIColor.blue.cgColor
         

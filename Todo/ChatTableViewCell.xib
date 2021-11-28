@@ -17,24 +17,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ONv-5A-lCh">
-                        <rect key="frame" x="16" y="10" width="52" height="52"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rYb-Sn-G9h">
-                        <rect key="frame" x="76" y="10" width="228" height="52"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rYb-Sn-G9h">
+                        <rect key="frame" x="64" y="22" width="200" height="26"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="pMh-7k-JoV"/>
+                        </constraints>
+                        <string key="text">oighv;fdznsfc;oiadhsb;gkvzjnd:kcfnv;dfknv ;˚≈cnmv kzjbn .vkxczlkjbkdvmS*message sentakfjkfj;idh;igsjzd;kvcn;jnv;fnzkbnv ;IOZfdhv;oijrD+Vioh;dfAOIBNV;oIFDGV+iofdrz;vindf;zbva;oirudhv;oisd+Foi</string>
                         <color key="textColor" systemColor="labelColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ONv-5A-lCh">
+                        <rect key="frame" x="16" y="15" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Chk-t2-Rjb"/>
+                            <constraint firstAttribute="height" constant="40" id="lTF-bD-Q2o"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="ONv-5A-lCh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="9JP-zC-CeW"/>
+                    <constraint firstItem="rYb-Sn-G9h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="WlB-2D-bQM"/>
+                    <constraint firstItem="ONv-5A-lCh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="dPv-uz-suG"/>
+                    <constraint firstAttribute="bottom" secondItem="rYb-Sn-G9h" secondAttribute="bottom" constant="22" id="gIr-Xh-DKt"/>
+                    <constraint firstItem="rYb-Sn-G9h" firstAttribute="leading" secondItem="ONv-5A-lCh" secondAttribute="trailing" constant="8" symbolic="YES" id="wxR-V2-pNs"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="chatText" destination="rYb-Sn-G9h" id="6xK-UO-Mh4"/>
+                <outlet property="classmateImageView" destination="ONv-5A-lCh" id="Zg6-fO-JOE"/>
+                <outlet property="classmateTextVIew" destination="rYb-Sn-G9h" id="FUg-Lw-g7A"/>
+                <outlet property="textViewWidthConstraint" destination="pMh-7k-JoV" id="PdQ-bI-bfW"/>
             </connections>
             <point key="canvasLocation" x="34.782608695652179" y="84.375"/>
         </tableViewCell>
