@@ -39,7 +39,6 @@ class DisplayGroupsViewController: UIViewController {
                     
                     print(err!)
                     return
-                    
                 }
                 
                 //一旦データを削除

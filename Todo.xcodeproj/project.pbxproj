@@ -16,6 +16,7 @@
 		6C0653AA2740AD7E0068508C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C0653A82740AD7E0068508C /* LaunchScreen.storyboard */; };
 		6C0653B52740AD7E0068508C /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0653B42740AD7E0068508C /* TodoTests.swift */; };
 		6C0653C02740AD7E0068508C /* TodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0653BF2740AD7E0068508C /* TodoUITests.swift */; };
+		6C61C65B2765C91B0062028C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C61C65A2765C91B0062028C /* SignInViewController.swift */; };
 		6C63817F2765A2A30087F58C /* MakeUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63817E2765A2A20087F58C /* MakeUserViewController.swift */; };
 		6C73B3462740B5C800BB8E27 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C73B3442740B5C800BB8E27 /* CollectionViewCell.swift */; };
 		6C73B3472740B5C800BB8E27 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C73B3452740B5C800BB8E27 /* CollectionViewCell.xib */; };
@@ -69,6 +70,7 @@
 		6C0653BB2740AD7E0068508C /* TodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C0653BF2740AD7E0068508C /* TodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITests.swift; sourceTree = "<group>"; };
 		6C0653C12740AD7E0068508C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C61C65A2765C91B0062028C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6C63817E2765A2A20087F58C /* MakeUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeUserViewController.swift; sourceTree = "<group>"; };
 		6C73B3442740B5C800BB8E27 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		6C73B3452740B5C800BB8E27 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				6C73B34C2740D61B00BB8E27 /* DisplayGroupsViewController.swift */,
 				6CB18C862740E80300C5F54F /* ChatViewController.swift */,
 				6C63817E2765A2A20087F58C /* MakeUserViewController.swift */,
+				6C61C65A2765C91B0062028C /* SignInViewController.swift */,
 				6C0653A02740AD7B0068508C /* Main.storyboard */,
 				6C0653A62740AD7E0068508C /* Assets.xcassets */,
 				6C73B34A2740D32000BB8E27 /* GoogleService-Info.plist */,
@@ -454,6 +457,7 @@
 				6C06539B2740AD7B0068508C /* AppDelegate.swift in Sources */,
 				6C06539D2740AD7B0068508C /* SceneDelegate.swift in Sources */,
 				6CB18C842740E73000C5F54F /* ChatTableViewCell.swift in Sources */,
+				6C61C65B2765C91B0062028C /* SignInViewController.swift in Sources */,
 				6C0653A52740AD7B0068508C /* Todo.xcdatamodeld in Sources */,
 				6CB18C872740E80300C5F54F /* ChatViewController.swift in Sources */,
 				6C73B3492740B6E000BB8E27 /* MakeRoomViewController.swift in Sources */,

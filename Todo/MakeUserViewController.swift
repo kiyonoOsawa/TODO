@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
 
 class MakeUserViewController: UIViewController {
     
@@ -14,7 +18,7 @@ class MakeUserViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     
-//    let storageRef = Storage.storage().reference
+    let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,45 @@ class MakeUserViewController: UIViewController {
         imagePickerViewController.allowsEditing = true
         
         self.present(imagePickerViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func tappedSignUpButton(_ sender: Any) {
+        if emailTextField.text != nil && passWordTextField.text != nil{
+            createUser(emailText: emailTextField.text!, passwordText: passWordTextField.text!)
+        }
+    }
+    
+    @IBAction func toLoginButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "toLogin", sender: nil)
+    }
+    
+    func createUser(emailText: String, passwordText: String){
+        Auth.auth().createUser(withEmail: emailText, password: passwordText) { FIRAuthDataResult, Error in
+            guard let authResult = FIRAuthDataResult else {
+                print("error: SignUp")
+                return
+            }
+            let reference = self.storageRef.child("userProfile").child("\(authResult.user.uid).jpg")
+            guard let image = self.userProfileButton.imageView?.image else {
+                return
+            }
+            guard let uploadImage = image.jpegData(compressionQuality: 0.2) else{
+                return
+            }
+            reference.putData(uploadImage, metadata: nil){(metadate, err) in
+                if let error = err{
+                    print("error: \(error)")
+                }
+            }
+            let addData = [
+                "userName": self.userNameTextField.text!
+            ]
+            let db = Firebase.Firestore.firestore()
+            db.collection("users")
+                .document(authResult.user.uid)
+                .setData(addData)
+            self.transition()
+        }
     }
     
     func transition(){

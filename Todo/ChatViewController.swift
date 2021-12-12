@@ -8,12 +8,16 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
+import FirebaseStorageUI
 
 class ChatViewController: UIViewController {
     
     @IBOutlet weak var chatTableView: UITableView!
     let db = Firebase.Firestore.firestore()
     var sentGroupId: String = ""
+    let user = Auth.auth().currentUser
+    var addresses: [[String : Any]] = []
     //InputAccesoryViewのインスタンス作成
     lazy var chatInputAccesoryView: InputAccesoryView = {
         let view = InputAccesoryView()
@@ -40,6 +44,29 @@ class ChatViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        db.collection("groups")
+            .document(sentGroupId)
+            .collection("messages")
+            .addSnapshotListener {(querysnapshot, err) in
+                guard let snapshot = querysnapshot else {
+                    print(err!)
+                    return
+                }
+                self.addresses.removeAll()
+                
+                for doc in snapshot.documents {
+                    let messages = doc.data()["chatContent"] as! String
+                    let timeStamp = doc.data()["time"] as! Timestamp
+                    let userUid = doc.data()["user"] as! String
+                    
+                    let date: Date = timeStamp.dateValue()
+                    
+                    self.addresses.append(["chatCountent": messages,
+                                           "time": date,
+                                           "user": userUid])
+                    self.chatTableView.reloadData()
+                }
+            }
     }
     //inputAccessryViewとして表示される(実際に表示)
     override var inputAccessoryView: UIView?{
@@ -57,6 +84,7 @@ extension ChatViewController: InputAccesoryViewDelegate {
     func tappedButton(text: String) {
         
         let addData: [String:Any] = ["chatContent": text,
+                                     "user": user?.uid,
                                      "time": Timestamp(date: Date())]
         db.collection("groups")
             .document(sentGroupId)

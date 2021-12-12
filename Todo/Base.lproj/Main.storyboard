@@ -41,7 +41,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNk-QA-InV">
                                 <rect key="frame" x="159" y="622" width="97" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <color key="backgroundColor" name="MainColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -247,6 +247,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up">
                                     <fontDescription key="titleFontDescription" name="NotoSansMyanmar-Bold" family="Noto Sans Myanmar" pointSize="20"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedSignUpButton:" destination="T2P-Tb-zPU" eventType="touchUpInside" id="Co3-bJ-srD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Axb-um-ySE">
                                 <rect key="frame" x="114" y="750" width="182" height="31"/>
@@ -254,6 +257,9 @@
                                 <color key="tintColor" name="DarkMainColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="アカウント作成済みの方"/>
+                                <connections>
+                                    <action selector="toLoginButton:" destination="T2P-Tb-zPU" eventType="touchUpInside" id="Hrg-Gt-xX4"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10l-Y5-uWn">
                                 <rect key="frame" x="57" y="291" width="120" height="30"/>
@@ -271,18 +277,19 @@
                         <outlet property="passWordTextField" destination="VoP-v2-tHO" id="GJz-nv-5KG"/>
                         <outlet property="userNameTextField" destination="FgU-JC-Rys" id="mPf-FQ-V84"/>
                         <outlet property="userProfileButton" destination="2GS-pF-pHM" id="w8w-Wu-DYz"/>
+                        <segue destination="pW0-Va-lOu" kind="show" identifier="toLogin" id="KZF-Sv-d0r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1l-bZ-iEJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1220.2898550724638" y="717.85714285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="48G-Or-InC">
             <objects>
-                <viewController id="pW0-Va-lOu" sceneMemberID="viewController">
+                <viewController id="pW0-Va-lOu" customClass="SignInViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SwB-Qx-fKb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db7-g1-9Ky">
@@ -326,11 +333,19 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Log In">
                                     <fontDescription key="titleFontDescription" name="NotoSansMyanmar-Bold" family="Noto Sans Myanmar" pointSize="20"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedLoginButton:" destination="pW0-Va-lOu" eventType="touchUpInside" id="aru-zd-YJs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZSM-fr-d9B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7WU-L6-ChO"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="nAO-44-uLN" id="Xcr-Py-uX6"/>
+                        <outlet property="passwordTextField" destination="GDX-uS-hwc" id="sqd-Zd-mBS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tj0-CJ-rAl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -382,9 +397,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
