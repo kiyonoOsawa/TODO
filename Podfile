@@ -4,6 +4,9 @@
 target 'Todo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'FirebaseUI/Storage'
 pod 'Firebase/Analytics'
 pod 'Firebase/Firestore'
   # Pods for Todo
