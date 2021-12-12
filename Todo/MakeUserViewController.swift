@@ -13,6 +13,8 @@ class MakeUserViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
+    
+//    let storageRef = Storage.storage().reference
 
     override func viewDidLoad() {
         super.viewDidLoad()
