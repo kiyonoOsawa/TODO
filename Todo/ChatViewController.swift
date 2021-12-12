@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class ChatViewController: UIViewController {
     
     @IBOutlet weak var chatTableView: UITableView!
-    
+    let db = Firebase.Firestore.firestore()
+    var sentGroupId: String = ""
     //InputAccesoryViewのインスタンス作成
     lazy var chatInputAccesoryView: InputAccesoryView = {
         let view = InputAccesoryView()
@@ -32,6 +35,8 @@ class ChatViewController: UIViewController {
         chatTableView.separatorStyle = .none
         //tabbarを非表示にする
         self.tabBarController?.tabBar.isHidden = true
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +56,12 @@ class ChatViewController: UIViewController {
 extension ChatViewController: InputAccesoryViewDelegate {
     func tappedButton(text: String) {
         
+        let addData: [String:Any] = ["chatContent": text,
+                                     "time": Timestamp(date: Date())]
+        db.collection("groups")
+            .document(sentGroupId)
+            .collection("messages")
+            .addDocument(data: addData)
     }
 }
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
