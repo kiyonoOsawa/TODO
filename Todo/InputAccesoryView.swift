@@ -8,15 +8,27 @@
 import Foundation
 import UIKit
 
+protocol InputAccesoryViewDelegate: AnyObject {
+    func tappedButton(text: String)
+}
+
 class InputAccesoryView: UIView{
     
     @IBOutlet weak var sendMessageButton: UIButton!
     @IBOutlet weak var messageTextView: UITextView!
     
+    weak var delegate: InputAccesoryViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         instantiateNib()
         updateUI()
+    }
+    
+    @IBAction func tappedSendMessageButton(_ sender: Any) {
+        guard let text = messageTextView.text else {return}
+        
+        delegate?.tappedButton(text: text)
     }
     func instantiateNib() {
         let nib = UINib(nibName: "InputAccesoryView", bundle: nil)

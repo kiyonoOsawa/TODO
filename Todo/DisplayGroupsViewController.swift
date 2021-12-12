@@ -83,4 +83,8 @@ extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionVie
         return CGSize(width: cellWidth, height: cellHeight)
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toChat", sender: nil)
+    }
 }

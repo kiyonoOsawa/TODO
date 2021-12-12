@@ -14,6 +14,7 @@ class ChatViewController: UIViewController {
     //InputAccesoryViewのインスタンス作成
     lazy var chatInputAccesoryView: InputAccesoryView = {
         let view = InputAccesoryView()
+        view.delegate = self
         view.frame = .init(x: 0, y: 0, width: view.frame.width , height: 100)
         return view
     }()
@@ -47,6 +48,11 @@ class ChatViewController: UIViewController {
     }
 }
 
+extension ChatViewController: InputAccesoryViewDelegate {
+    func tappedButton(text: String) {
+        
+    }
+}
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
