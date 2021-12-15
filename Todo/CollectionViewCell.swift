@@ -17,7 +17,7 @@ class CollectionViewCell: UICollectionViewCell {
         
         groupImage.layer.cornerRadius = 38
         groupImage.layer.borderWidth = 1
-        groupImage.layer.backgroundColor = UIColor.blue.cgColor
+        groupImage.layer.backgroundColor = UIColor.lightGray.cgColor
         groupImage.layer.masksToBounds = true
     }
 

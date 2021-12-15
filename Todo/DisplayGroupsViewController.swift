@@ -64,9 +64,9 @@ extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
         cell.layer.cornerRadius = 12
-        cell.layer.shadowOpacity = 0.25 // 影の濃さ
+        cell.layer.shadowOpacity = 0.2 // 影の濃さ
         cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 2, height: 3)
+        cell.layer.shadowOffset = CGSize(width: 1, height: 2)
         cell.layer.masksToBounds = false
         cell.groupName.text = addresses[indexPath.row]["roomName"]
         

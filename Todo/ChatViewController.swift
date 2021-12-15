@@ -15,7 +15,7 @@ class ChatViewController: UIViewController {
     
     @IBOutlet weak var chatTableView: UITableView!
     let db = Firebase.Firestore.firestore()
-    var sentGroupId: String = ""
+//    var sentGroupId: String = ""
     let user = Auth.auth().currentUser
     var addresses: [[String : Any]] = []
     //InputAccesoryViewのインスタンス作成
@@ -44,29 +44,29 @@ class ChatViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        db.collection("groups")
-            .document(sentGroupId)
-            .collection("messages")
-            .addSnapshotListener {(querysnapshot, err) in
-                guard let snapshot = querysnapshot else {
-                    print(err!)
-                    return
-                }
-                self.addresses.removeAll()
-                
-                for doc in snapshot.documents {
-                    let messages = doc.data()["chatContent"] as! String
-                    let timeStamp = doc.data()["time"] as! Timestamp
-                    let userUid = doc.data()["user"] as! String
-                    
-                    let date: Date = timeStamp.dateValue()
-                    
-                    self.addresses.append(["chatCountent": messages,
-                                           "time": date,
-                                           "user": userUid])
-                    self.chatTableView.reloadData()
-                }
-            }
+//        db.collection("groups")
+//            .document(sentGroupId)
+//            .collection("messages")
+//            .addSnapshotListener {(querysnapshot, err) in
+//                guard let snapshot = querysnapshot else {
+//                    print(err!)
+//                    return
+//                }
+//                self.addresses.removeAll()
+//
+//                for doc in snapshot.documents {
+//                    let messages = doc.data()["chatContent"] as! String
+//                    let timeStamp = doc.data()["time"] as! Timestamp
+//                    let userUid = doc.data()["user"] as! String
+//
+//                    let date: Date = timeStamp.dateValue()
+//
+//                    self.addresses.append(["chatCountent": messages,
+//                                           "time": date,
+//                                           "user": userUid])
+//                    self.chatTableView.reloadData()
+//                }
+//            }
     }
     //inputAccessryViewとして表示される(実際に表示)
     override var inputAccessoryView: UIView?{
@@ -87,8 +87,8 @@ extension ChatViewController: InputAccesoryViewDelegate {
                                      "user": user?.uid,
                                      "time": Timestamp(date: Date())]
         db.collection("groups")
-            .document(sentGroupId)
-            .collection("messages")
+//            .document(sentGroupId)
+//            .collection("messages")
             .addDocument(data: addData)
     }
 }
