@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,14 +18,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pd6-el-evQ">
-                        <rect key="frame" x="20" y="12" width="76" height="76"/>
+                        <rect key="frame" x="20" y="14" width="72" height="72"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="76" id="Veu-zJ-hvY"/>
-                            <constraint firstAttribute="width" constant="76" id="tBQ-dD-WUg"/>
+                            <constraint firstAttribute="height" constant="72" id="Veu-zJ-hvY"/>
+                            <constraint firstAttribute="width" constant="72" id="tBQ-dD-WUg"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMz-UU-1Cg">
-                        <rect key="frame" x="116" y="36.5" width="49" height="27"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMz-UU-1Cg">
+                        <rect key="frame" x="112" y="36.5" width="49" height="27"/>
                         <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -37,7 +38,8 @@
                 <constraint firstItem="OMz-UU-1Cg" firstAttribute="leading" secondItem="pd6-el-evQ" secondAttribute="trailing" constant="20" id="J58-MA-4Z7"/>
                 <constraint firstItem="pd6-el-evQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="PZM-Q4-6wd"/>
                 <constraint firstItem="pd6-el-evQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Pw6-oQ-8Cj"/>
-                <constraint firstItem="OMz-UU-1Cg" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="mHs-tj-6Zx"/>
+                <constraint firstItem="pd6-el-evQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cvs-9X-OCq"/>
+                <constraint firstItem="OMz-UU-1Cg" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="et5-MK-dmy"/>
             </constraints>
             <size key="customSize" width="142" height="50"/>
             <connections>

@@ -15,8 +15,8 @@ class CollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        groupImage.layer.cornerRadius = 38
-        groupImage.layer.borderWidth = 1
+        groupImage.layer.cornerRadius = 36
+//        groupImage.layer.borderWidth = 1
         groupImage.layer.backgroundColor = UIColor.lightGray.cgColor
         groupImage.layer.masksToBounds = true
     }

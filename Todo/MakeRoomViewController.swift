@@ -7,6 +7,9 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseStorageUI
 
 class MakeRoomViewController: UIViewController {
     
@@ -16,6 +19,7 @@ class MakeRoomViewController: UIViewController {
     @IBOutlet weak var roomNumberTextField: UITextField!
     
     let db = Firebase.Firestore.firestore()
+    let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +43,23 @@ class MakeRoomViewController: UIViewController {
         // データを追加
         let addData = [
             "roomName": roomNameTextField.text!,
-            "roomNumber": roomNumberTextField.text!
-        ]
+            "roomNumber": roomNumberTextField.text!]
         
         db.collection("groups")
             .addDocument(data: addData){ err in
-                
                 if let error = err {
                     print("保存に失敗しました:\(error)")
+                }
+                let reference = self.storageRef.child("groupProfile").child("\(self.roomNameTextField.text!).jpg")
+                guard let image = self.profileButton.imageView?.image else{
+                    return
+                }
+                guard let uploadImage = image.jpegData(compressionQuality: 0.2) else{
+                    return
+                }
+                reference.putData(uploadImage, metadata: nil){ (metaData, err) in
+                    if let error = err {
+                    }
                 }
             }
         self.dismiss(animated: true, completion: nil)

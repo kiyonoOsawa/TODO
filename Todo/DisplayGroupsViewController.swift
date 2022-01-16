@@ -8,13 +8,17 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
+import FirebaseStorageUI
 
 class DisplayGroupsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     let db = Firebase.Firestore.firestore()
+    let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
     var addresses: [[String : String]] = []
+    var groupId: String!
     var viewWidth: CGFloat! // viewの横幅
     var viewHeight: CGFloat! // viewの縦幅
     
@@ -46,16 +50,25 @@ class DisplayGroupsViewController: UIViewController {
                 
                 for doc in snapshot.documents{
                     let roomName = doc.data()["roomName"] as! String
+                    let docID = doc.documentID
                     //下から用意している配列に追加
-                    self.addresses.append(["roomName": roomName])
+                    self.addresses.append(["roomName": roomName,
+                                          "docID": docID])
                     self.collectionView.reloadData()
                 }
             }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender:Any?){
+        if segue.identifier == "toChat"{
+            let vc = segue.destination as! ChatViewController
+            vc.sentGroupId = self.groupId
+            print("groupId: \(groupId)")
+        }
+    }
 }
 
 extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         addresses.count
     }
@@ -69,6 +82,10 @@ extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionVie
         cell.layer.shadowOffset = CGSize(width: 1, height: 2)
         cell.layer.masksToBounds = false
         cell.groupName.text = addresses[indexPath.row]["roomName"]
+        
+        let groupName: String = addresses[indexPath.row]["roomName"]!
+        let reference = storageRef.child("groupProfile").child("\(groupName).jpg")
+        cell.groupImage.sd_setImage(with: reference)
         
         return cell
         
@@ -84,6 +101,7 @@ extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        groupId = addresses[indexPath.row]["docID"]!
         self.performSegue(withIdentifier: "toChat", sender: nil)
     }
 }

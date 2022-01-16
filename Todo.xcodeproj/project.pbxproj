@@ -31,6 +31,10 @@
 		7DECB0BAC8350BB2277B0333 /* Pods_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52B6F50D14E73170BBDEDD9 /* Pods_Todo.framework */; };
 		AEEF58130B16C582B63BC536 /* Pods_Todo_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0766B3E95E94F7F561E30DEF /* Pods_Todo_TodoUITests.framework */; };
 		BD372A9B47034CA9912346D6 /* Pods_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C117EF4A4E30A111DF68BEE /* Pods_TodoTests.framework */; };
+		CE398C1B2793F620005BBFA7 /* MyTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE398C1A2793F620005BBFA7 /* MyTodoViewController.swift */; };
+		CE398C1E2793F6D9005BBFA7 /* TodoTableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE398C1C2793F6D9005BBFA7 /* TodoTableCollectionViewCell.swift */; };
+		CE398C1F2793F6D9005BBFA7 /* TodoTableCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE398C1D2793F6D9005BBFA7 /* TodoTableCollectionViewCell.xib */; };
+		CE398C212793F7DD005BBFA7 /* MakeTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE398C202793F7DD005BBFA7 /* MakeTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,11 @@
 		AB9B6175E2CFBFB9E74BF969 /* Pods-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.release.xcconfig"; path = "Target Support Files/Pods-Todo/Pods-Todo.release.xcconfig"; sourceTree = "<group>"; };
 		BF4B3BE3C50731A73526C919 /* Pods-TodoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoTests.release.xcconfig"; path = "Target Support Files/Pods-TodoTests/Pods-TodoTests.release.xcconfig"; sourceTree = "<group>"; };
 		CA703CD47C8C7F7408A27503 /* Pods-TodoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoTests.debug.xcconfig"; path = "Target Support Files/Pods-TodoTests/Pods-TodoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE398C162793F607005BBFA7 /* Todo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Todo-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE398C1A2793F620005BBFA7 /* MyTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoViewController.swift; sourceTree = "<group>"; };
+		CE398C1C2793F6D9005BBFA7 /* TodoTableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE398C1D2793F6D9005BBFA7 /* TodoTableCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoTableCollectionViewCell.xib; sourceTree = "<group>"; };
+		CE398C202793F7DD005BBFA7 /* MakeTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTaskViewController.swift; sourceTree = "<group>"; };
 		D52B6F50D14E73170BBDEDD9 /* Pods_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -160,10 +169,14 @@
 				6CB18C862740E80300C5F54F /* ChatViewController.swift */,
 				6C63817E2765A2A20087F58C /* MakeUserViewController.swift */,
 				6C61C65A2765C91B0062028C /* SignInViewController.swift */,
+				CE398C1A2793F620005BBFA7 /* MyTodoViewController.swift */,
+				CE398C202793F7DD005BBFA7 /* MakeTaskViewController.swift */,
 				6C0653A02740AD7B0068508C /* Main.storyboard */,
 				6C0653A62740AD7E0068508C /* Assets.xcassets */,
 				6C73B34A2740D32000BB8E27 /* GoogleService-Info.plist */,
 				6C0653A82740AD7E0068508C /* LaunchScreen.storyboard */,
+				CE398C1C2793F6D9005BBFA7 /* TodoTableCollectionViewCell.swift */,
+				CE398C1D2793F6D9005BBFA7 /* TodoTableCollectionViewCell.xib */,
 				6C73B3442740B5C800BB8E27 /* CollectionViewCell.swift */,
 				6C73B3452740B5C800BB8E27 /* CollectionViewCell.xib */,
 				6CB18C822740E73000C5F54F /* ChatTableViewCell.swift */,
@@ -172,6 +185,7 @@
 				6CEB06F027534E8F0067AA74 /* InputAccesoryView.xib */,
 				6C0653AB2740AD7E0068508C /* Info.plist */,
 				6C0653A32740AD7B0068508C /* Todo.xcdatamodeld */,
+				CE398C162793F607005BBFA7 /* Todo-Bridging-Header.h */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -279,6 +293,7 @@
 				TargetAttributes = {
 					6C0653962740AD7B0068508C = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1320;
 					};
 					6C0653AF2740AD7E0068508C = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -320,6 +335,7 @@
 				6C0653A72740AD7E0068508C /* Assets.xcassets in Resources */,
 				6C73B34B2740D32000BB8E27 /* GoogleService-Info.plist in Resources */,
 				6C0653A22740AD7B0068508C /* Main.storyboard in Resources */,
+				CE398C1F2793F6D9005BBFA7 /* TodoTableCollectionViewCell.xib in Resources */,
 				6C73B3472740B5C800BB8E27 /* CollectionViewCell.xib in Resources */,
 				6CEB06F127534E8F0067AA74 /* InputAccesoryView.xib in Resources */,
 			);
@@ -450,8 +466,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C73B3462740B5C800BB8E27 /* CollectionViewCell.swift in Sources */,
+				CE398C1E2793F6D9005BBFA7 /* TodoTableCollectionViewCell.swift in Sources */,
+				CE398C1B2793F620005BBFA7 /* MyTodoViewController.swift in Sources */,
 				6C63817F2765A2A30087F58C /* MakeUserViewController.swift in Sources */,
 				6C73B34D2740D61B00BB8E27 /* DisplayGroupsViewController.swift in Sources */,
+				CE398C212793F7DD005BBFA7 /* MakeTaskViewController.swift in Sources */,
 				6CEB06F327534FD70067AA74 /* InputAccesoryView.swift in Sources */,
 				6C06539F2740AD7B0068508C /* ViewController.swift in Sources */,
 				6C06539B2740AD7B0068508C /* AppDelegate.swift in Sources */,
@@ -637,6 +656,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Todo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -645,6 +665,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.osawa.kiyo.Todo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Todo/Todo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -656,6 +678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Todo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -664,6 +687,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.osawa.kiyo.Todo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Todo/Todo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

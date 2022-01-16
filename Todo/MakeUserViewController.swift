@@ -84,7 +84,7 @@ class MakeUserViewController: UIViewController {
 
 extension MakeUserViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // サイズなどを変えた際に受け取るイメージ
         if let image = info[.editedImage] as? UIImage{
             userProfileButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)

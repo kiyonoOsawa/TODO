@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +24,6 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="pMh-7k-JoV"/>
                         </constraints>
-                        <string key="text">oighv;fdznsfc;oiadhsb;gkvzjnd:kcfnv;dfknv ;˚≈cnmv kzjbn .vkxczlkjbkdvmS*message sentakfjkfj;idh;igsjzd;kvcn;jnv;fnzkbnv ;IOZfdhv;oijrD+Vioh;dfAOIBNV;oIFDGV+iofdrz;vindf;zbva;oirudhv;oisd+Foi</string>
                         <color key="textColor" systemColor="labelColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -35,12 +35,26 @@
                             <constraint firstAttribute="height" constant="40" id="lTF-bD-Q2o"/>
                         </constraints>
                     </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-eZ-STU">
+                        <rect key="frame" x="100" y="16" width="200" height="38"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="jaA-VB-lCp"/>
+                        </constraints>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Xba-eZ-STU" secondAttribute="trailing" constant="20" id="7dL-d8-XgU"/>
                     <constraint firstItem="ONv-5A-lCh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="9JP-zC-CeW"/>
+                    <constraint firstAttribute="bottom" secondItem="Xba-eZ-STU" secondAttribute="bottom" constant="16" id="Fo4-KB-ilE"/>
+                    <constraint firstItem="Xba-eZ-STU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Ldu-Tc-BZb"/>
                     <constraint firstItem="rYb-Sn-G9h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="WlB-2D-bQM"/>
                     <constraint firstItem="ONv-5A-lCh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="dPv-uz-suG"/>
                     <constraint firstAttribute="bottom" secondItem="rYb-Sn-G9h" secondAttribute="bottom" constant="22" id="gIr-Xh-DKt"/>
+                    <constraint firstItem="Xba-eZ-STU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oJL-Pp-gk7"/>
                     <constraint firstItem="rYb-Sn-G9h" firstAttribute="leading" secondItem="ONv-5A-lCh" secondAttribute="trailing" constant="8" symbolic="YES" id="wxR-V2-pNs"/>
                 </constraints>
             </tableViewCellContentView>
@@ -48,9 +62,11 @@
             <connections>
                 <outlet property="classmateImageView" destination="ONv-5A-lCh" id="Zg6-fO-JOE"/>
                 <outlet property="classmateTextVIew" destination="rYb-Sn-G9h" id="FUg-Lw-g7A"/>
+                <outlet property="myTextView" destination="Xba-eZ-STU" id="8eB-7U-hBs"/>
+                <outlet property="myTextViewConstraint" destination="jaA-VB-lCp" id="KZ2-8T-HWY"/>
                 <outlet property="textViewWidthConstraint" destination="pMh-7k-JoV" id="PdQ-bI-bfW"/>
             </connections>
-            <point key="canvasLocation" x="34.782608695652179" y="84.375"/>
+            <point key="canvasLocation" x="102.89855072463769" y="72.991071428571431"/>
         </tableViewCell>
     </objects>
     <resources>

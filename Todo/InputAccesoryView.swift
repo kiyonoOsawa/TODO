@@ -24,6 +24,11 @@ class InputAccesoryView: UIView{
         instantiateNib()
         updateUI()
     }
+    //追加　ボタンが押されたら発動するメソッド
+    func removeText(){
+        messageTextView.text = ""
+        sendMessageButton.isEnabled = false
+    }
     
     @IBAction func tappedSendMessageButton(_ sender: Any) {
         guard let text = messageTextView.text else {return}
