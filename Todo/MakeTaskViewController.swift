@@ -7,30 +7,141 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestore
+import FirebaseStorage
 import FirebaseAuth
+import FirebaseFirestore
 
-class MakeTaskViewController: UIViewController {
-
+class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDelegate {
+    
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var color1: UIButton!
-    @IBOutlet weak var color2: UIButton!
-    @IBOutlet weak var color3: UIButton!
-    @IBOutlet weak var color4: UIButton!
-    @IBOutlet weak var color5: UIButton!
+    @IBOutlet weak var color: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    let alert: UIAlertController = UIAlertController(title: "保存", message: "完了しました", preferredStyle: .alert)
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
+    let userDefaults = UserDefaults.standard
+    var timeArray = [String]()
+    var didselectColor = UIColor()
+    var rgbRed = CGFloat()
+    var rgbGreen = CGFloat()
+    var rgbBlue = CGFloat()
+    var alpha = CGFloat()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if userDefaults.object(forKey: "time") != nil {
+            timeArray = userDefaults.object(forKey: "time") as! [String]
+        }
+        uiImage()
     }
+    
+    func updateFirestore() {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日"
+        let time = formatter.string(from: datePicker.date)
+        timeArray.append(time)
+        let orderedSet: NSOrderedSet = NSOrderedSet(array: timeArray)
+        timeArray = orderedSet.array as! [String]
+        userDefaults.set(timeArray, forKey: "time")
+        
+        let user = user
+        guard let user = user else {return}
+        
+        let addData:[String: Any] = [
+            "time":Timestamp(date: datePicker.date),
+            "content":textView.text,
+            "redcolor": rgbRed,
+            "greencolor": rgbGreen,
+            "bluecolor": rgbBlue,
+            "alpha":alpha
+        ]
+        db.collection("users")
+            .document(user.uid)
+            .collection(time)
+            .addDocument(data: addData)
+    }
+    
+    //    func observeColor() {
+    //        db.collection("users")
+    //            .document("userID")
+    //            .collection("Todos")
+    //            .document("Todo")
+    //            .addSnapshotListener { (snapshot: DocumentSnapshot?, error: Error) in
+    //                if let color = snapshot?.data()?["color"] as? Any{
+    //                    self.color = color
+    //                    self.updateLabel()
+    //                }
+    //            }
+    //    }
     
     @IBAction func savecontentButton() {
-        
+        self.dismiss(animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
+        updateFirestore()
     }
     
+    @IBAction func tappedColor() {
+        showColorPicker()
+    }
+    
+    func uiImage() {
+        let Purple = UIColor(named: "Purple")
+        guard let Purple = Purple else { return }
+        
+        textView.layer.cornerRadius = 12
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = Purple.cgColor
+        textView.layer.shadowOpacity = 0.2
+        textView.layer.shadowColor = UIColor.black.cgColor
+        textView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        textView.layer.masksToBounds = false
+        color.layer.cornerRadius = 20
+        color.layer.borderWidth = 1
+        color.layer.shadowColor = UIColor.black.cgColor
+        color.setTitle("", for: .normal)
+    }
+    
+    func showColorPicker() {
+        let colorPicker = UIColorPickerViewController()
+        colorPicker.selectedColor = UIColor.black
+        colorPicker.delegate = self
+        self.present(colorPicker, animated: true, completion: nil)
+    }
+    
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        print("選択した色:\(viewController.selectedColor)")
+        //        didselectColor = viewController.selectedColor
+    }
+    
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        rgbRed = viewController.selectedColor.redColor!
+        rgbGreen = viewController.selectedColor.greenColor!
+        rgbBlue = viewController.selectedColor.blueColor!
+        alpha = viewController.selectedColor.alpha
+        didselectColor = viewController.selectedColor
+        color.backgroundColor = didselectColor
+//        updateFirestore()
+    }
 }
+
+extension UIColor {
+    var redColor: CGFloat? {
+        return self.cgColor.components?[0]
+    }
+    
+    var greenColor: CGFloat? {
+        return self.cgColor.components?[1]
+    }
+    
+    var blueColor: CGFloat? {
+        return self.cgColor.components?[2]
+    }
+    
+    var alpha: CGFloat {
+        return self.cgColor.alpha
+    }
+}
+

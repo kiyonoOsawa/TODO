@@ -35,12 +35,11 @@ class ChatViewController: UIViewController {
         chatTableView.register(UINib(nibName: "ChatTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         //選択不可にする
         chatTableView.allowsSelection = false
-        //背景色の設定
-        //        chatTableView.backgroundColor = UIColor(named: "DarkMainColor")
         //区切り線をなくす
         chatTableView.separatorStyle = .none
         //tabbarを非表示にする
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.tintColor = .black
         
         
     }
@@ -116,6 +115,7 @@ extension ChatViewController: InputAccesoryViewDelegate {
                 cell.classmateMessageText = text
                 let reference = storageRef.child("userProfile").child("\(chatUid).jpg")
                 cell.classmateImageView.sd_setImage(with: reference)
+                cell.myTextView.backgroundColor = UIColor(named: "BackColor")
             }
             return cell
         }

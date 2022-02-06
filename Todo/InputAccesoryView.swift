@@ -46,7 +46,7 @@ class InputAccesoryView: UIView{
         self.addSubview(view)
     }
     func updateUI() {
-        messageTextView.layer.cornerRadius = 15
+        messageTextView.layer.cornerRadius = 10
         messageTextView.layer.borderWidth = 1
         messageTextView.layer.borderColor = UIColor.lightGray.cgColor
         //高さを可変するのに必要

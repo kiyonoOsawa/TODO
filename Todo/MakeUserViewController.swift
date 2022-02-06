@@ -11,18 +11,21 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
 
-class MakeUserViewController: UIViewController {
+class MakeUserViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet var textFieldImage: [UITextField]!
     @IBOutlet weak var userProfileButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var toLogInButton: UIButton!
     
     let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        colorImage()
     }
     
     @IBAction func tappedProfileButton(_ sender: Any) {
@@ -79,6 +82,30 @@ class MakeUserViewController: UIViewController {
         tabview.modalPresentationStyle = .fullScreen
         tabview.selectedIndex = 0
         self.present(tabview, animated: true, completion: nil)
+    }
+    
+    func colorImage() {
+        
+        let Purple = UIColor(named: "Purple")
+        guard let Purple = Purple else { return }
+       
+        //emailTextField
+        for textFieldImage in textFieldImage {
+            textFieldImage.layer.cornerRadius = 24
+            textFieldImage.backgroundColor = UIColor.white
+            textFieldImage.layer.borderWidth = 1
+            textFieldImage.layer.borderColor = Purple.cgColor
+            textFieldImage.layer.shadowOpacity = 0.5
+            textFieldImage.layer.shadowColor = UIColor.gray.cgColor
+            textFieldImage.layer.shadowOffset = CGSize(width: 1, height: 1)
+            textFieldImage.layer.masksToBounds = false
+            let leftPadding = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))
+            leftPadding.backgroundColor = UIColor.clear
+            textFieldImage.leftView = leftPadding
+            textFieldImage.leftViewMode = .always
+        }
+        signUpButton.layer.cornerRadius = 24
+        
     }
 }
 
