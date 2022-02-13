@@ -521,16 +521,16 @@
             </objects>
             <point key="canvasLocation" x="-310" y="-713"/>
         </scene>
-        <!--Todo-->
+        <!--My Todo View Controller-->
         <scene sceneID="eVE-6P-7Fd">
             <objects>
-                <viewController id="ZvP-19-9Zw" customClass="MyTodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ZvP-19-9Zw" customClass="MyTodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L3w-8c-2Z3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="af6-Gx-s5p">
-                                <rect key="frame" x="20" y="44" width="374" height="769"/>
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YXj-Dw-vdZ">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -558,26 +558,27 @@
                             <constraint firstItem="af6-Gx-s5p" firstAttribute="leading" secondItem="TlZ-nK-aYc" secondAttribute="leading" constant="20" id="mcI-j8-AQg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Todo" id="FdV-4y-YzX"/>
+                    <navigationItem key="navigationItem" id="7hT-t1-OWd"/>
                     <connections>
                         <outlet property="OuterCollectionView" destination="af6-Gx-s5p" id="2hk-2f-JHd"/>
                         <outlet property="addButton" destination="2bO-9v-l02" id="X4z-pJ-5of"/>
+                        <segue destination="bN1-Np-KNc" kind="show" id="3Dq-VM-my1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1X-8T-hRQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-310.14492753623193" y="-1467.1875"/>
+            <point key="canvasLocation" x="600" y="-1467.1875"/>
         </scene>
         <!--Make Task View Controller-->
         <scene sceneID="bET-5h-Qpp">
             <objects>
                 <viewController id="V1R-T3-ojk" customClass="MakeTaskViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xHr-if-v3U">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FQt-Hc-yjJ">
-                                <rect key="frame" x="67" y="158" width="280" height="200"/>
+                                <rect key="frame" x="67" y="246" width="280" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="YRG-VL-yv1"/>
@@ -588,7 +589,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HoM-oH-bmS">
-                                <rect key="frame" x="187" y="378" width="40" height="40"/>
+                                <rect key="frame" x="187" y="466" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="YzU-m7-CCq"/>
                                     <constraint firstAttribute="width" constant="40" id="aZp-yy-qoN"/>
@@ -600,14 +601,14 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EQQ-s2-B8V">
-                                <rect key="frame" x="67" y="93" width="280" height="45"/>
+                                <rect key="frame" x="67" y="181" width="280" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="Lhd-FR-aWr"/>
                                     <constraint firstAttribute="height" constant="45" id="cCA-c1-za6"/>
                                 </constraints>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6L-NS-bXq">
-                                <rect key="frame" x="304" y="37" width="90" height="40"/>
+                                <rect key="frame" x="304" y="125" width="90" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="J5B-G7-dFq"/>
                                     <constraint firstAttribute="width" constant="90" id="W47-np-Mdv"/>
@@ -644,7 +645,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eei-7e-Ceu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="-1467"/>
+            <point key="canvasLocation" x="-310" y="-2174"/>
+        </scene>
+        <!--Date Todo View Controller-->
+        <scene sceneID="12X-eK-zJ3">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="bN1-Np-KNc" customClass="DateTodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xa0-d3-8KS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dQI-5B-fIq">
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zfs-0G-ue2">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MwO-gd-Vch"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dQI-5B-fIq" firstAttribute="leading" secondItem="MwO-gd-Vch" secondAttribute="leading" constant="20" id="2dZ-0b-CWX"/>
+                            <constraint firstItem="MwO-gd-Vch" firstAttribute="bottom" secondItem="dQI-5B-fIq" secondAttribute="bottom" id="4H8-oB-RC4"/>
+                            <constraint firstItem="dQI-5B-fIq" firstAttribute="top" secondItem="MwO-gd-Vch" secondAttribute="top" id="cCC-Dg-8rM"/>
+                            <constraint firstItem="MwO-gd-Vch" firstAttribute="trailing" secondItem="dQI-5B-fIq" secondAttribute="trailing" constant="20" id="vOw-nk-Tok"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="C4q-fw-TBw"/>
+                    <connections>
+                        <outlet property="collectionView" destination="dQI-5B-fIq" id="gUn-oL-Jb1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uqj-4h-u71" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1597" y="-1467"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="9tk-HL-bHK">
@@ -658,7 +697,7 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ZvP-19-9Zw" kind="relationship" relationship="viewControllers" id="PYM-Qs-CWt"/>
+                        <segue destination="2vi-jJ-Klb" kind="relationship" relationship="viewControllers" id="PYM-Qs-CWt"/>
                         <segue destination="14q-UQ-AZO" kind="relationship" relationship="viewControllers" id="nOg-36-ojA"/>
                         <segue destination="fjc-xz-0sH" kind="relationship" relationship="viewControllers" id="3J2-6I-eVL"/>
                         <segue destination="fpN-KD-QVy" kind="relationship" relationship="viewControllers" id="BoH-DY-qtA"/>
@@ -719,6 +758,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4F-aW-ARQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-310" y="1501"/>
+        </scene>
+        <!--Todo-->
+        <scene sceneID="LfH-q0-c58">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2vi-jJ-Klb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Todo" id="FdV-4y-YzX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dPm-bX-fXG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZvP-19-9Zw" kind="relationship" relationship="rootViewController" id="jUy-zR-oDb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NYz-TF-cEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-310.14492753623193" y="-1467.1875"/>
         </scene>
     </scenes>
     <resources>
