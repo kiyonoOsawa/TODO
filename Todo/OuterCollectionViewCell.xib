@@ -11,16 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="OuterCollectionViewCell" customModule="Todo" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OuterCell" id="gTV-IL-0wX" customClass="OuterCollectionViewCell" customModule="Todo" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iAI-GG-8fz">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iAI-GG-8fz">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NQG-sh-1q2">
                             <size key="itemSize" width="128" height="128"/>
@@ -29,9 +28,8 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXu-dV-XKy">
-                        <rect key="frame" x="9" y="7" width="35" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXu-dV-XKy">
+                        <rect key="frame" x="5" y="5" width="35" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -39,6 +37,15 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="iAI-GG-8fz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="03D-dw-eRW"/>
+                <constraint firstItem="eXu-dV-XKy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="4Mv-21-sMo"/>
+                <constraint firstAttribute="trailing" secondItem="iAI-GG-8fz" secondAttribute="trailing" id="OhJ-t7-Dx5"/>
+                <constraint firstItem="eXu-dV-XKy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="ZwQ-cm-vqd"/>
+                <constraint firstItem="iAI-GG-8fz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fmc-II-g4i"/>
+                <constraint firstAttribute="bottom" secondItem="iAI-GG-8fz" secondAttribute="bottom" id="ryZ-V4-rWf"/>
+            </constraints>
             <size key="customSize" width="234" height="105"/>
             <connections>
                 <outlet property="InnerCollectionView" destination="iAI-GG-8fz" id="Lvh-Fm-zOZ"/>

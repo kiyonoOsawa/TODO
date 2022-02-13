@@ -10,15 +10,19 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseStorageUI
+import FirebaseAuth
 
 class MyTodoViewController: UIViewController {
     
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var OuterCollectionView: UICollectionView!
     
+    let db = Firestore.firestore()
+    let user = Auth.auth().currentUser
     var viewWidth: CGFloat = 0.0
     var timeArray = [String]()
-    let userDefaults = UserDefaults.standard
+    var addresses: [[String : Any]] = []
+    var date = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +30,45 @@ class MyTodoViewController: UIViewController {
         OuterCollectionView.delegate = self
         OuterCollectionView.dataSource = self
         OuterCollectionView.register(UINib(nibName: "OuterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OuterCell")
+        OuterCollectionView.allowsSelection = true
+        OuterCollectionView.isUserInteractionEnabled = true
+        
+        guard let user = user else { return }
+        
+        db.collection("users")
+            .document(user.uid)
+            .collection("tasks")
+            .order(by: "time", descending: false)
+            .addSnapshotListener{QuerySnapshot, Error in
+                guard let querySnapshot = QuerySnapshot else {return}
+                
+                self.addresses.removeAll()
+                for doc in querySnapshot.documents{
+                    let timeStamp = doc.data()["time"] as! Timestamp
+                    let content = doc.data()["content"] as! String
+                    let rgbRed = doc.data()["red"] as! CGFloat
+                    let rgbGreen = doc.data()["green"] as! CGFloat
+                    let rgbBlue = doc.data()["blue"] as! CGFloat
+                    let alpha = doc.data()["alpha"] as! CGFloat
+                    
+                    let date: Date = timeStamp.dateValue()
+                    
+                    self.addresses.append(
+                        ["time": date,
+                         "content": content,
+                         "red": rgbRed,
+                         "green": rgbGreen,
+                         "blue": rgbBlue,
+                         "alpha": alpha]
+                    )
+                    print("データ取り出し\(doc)")
+                }
+            }
+        self.OuterCollectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if userDefaults.object(forKey: "time") != nil{
-            timeArray = userDefaults.object(forKey: "time") as! [String]
-            print(timeArray)
-        }
-        viewWidth = view.frame.width
         self.OuterCollectionView.reloadData()
     }
 }
@@ -55,7 +89,7 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.layer.masksToBounds = false
         
         cell.dateLabel.text = timeArray[indexPath.row]
-        cell.configureCell(collectionName: timeArray[indexPath.row])
+        cell.configureCell(contentArray: addresses, date: timeArray[indexPath.row])
         
         return cell
     }
@@ -67,6 +101,4 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cellHeight: CGFloat = 160
         return CGSize(width: cellWidth, height: cellHeight)
     }
-    
-    
 }

@@ -21,7 +21,7 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     let alert: UIAlertController = UIAlertController(title: "保存", message: "完了しました", preferredStyle: .alert)
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
-    let userDefaults = UserDefaults.standard
+//    let userDefaults = UserDefaults.standard
     var timeArray = [String]()
     var didselectColor = UIColor()
     var rgbRed = CGFloat()
@@ -31,9 +31,9 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if userDefaults.object(forKey: "time") != nil {
-            timeArray = userDefaults.object(forKey: "time") as! [String]
-        }
+//        if userDefaults.object(forKey: "time") != nil {
+//            timeArray = userDefaults.object(forKey: "time") as! [String]
+//        }
         uiImage()
     }
     
@@ -45,7 +45,7 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
         timeArray.append(time)
         let orderedSet: NSOrderedSet = NSOrderedSet(array: timeArray)
         timeArray = orderedSet.array as! [String]
-        userDefaults.set(timeArray, forKey: "time")
+//        userDefaults.set(timeArray, forKey: "time")
         
         let user = user
         guard let user = user else {return}
@@ -64,23 +64,10 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
             .addDocument(data: addData)
     }
     
-    //    func observeColor() {
-    //        db.collection("users")
-    //            .document("userID")
-    //            .collection("Todos")
-    //            .document("Todo")
-    //            .addSnapshotListener { (snapshot: DocumentSnapshot?, error: Error) in
-    //                if let color = snapshot?.data()?["color"] as? Any{
-    //                    self.color = color
-    //                    self.updateLabel()
-    //                }
-    //            }
-    //    }
-    
     @IBAction func savecontentButton() {
+        updateFirestore()
         self.dismiss(animated: true, completion: nil)
         present(alert, animated: true, completion: nil)
-        updateFirestore()
     }
     
     @IBAction func tappedColor() {
@@ -123,7 +110,6 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
         alpha = viewController.selectedColor.alpha
         didselectColor = viewController.selectedColor
         color.backgroundColor = didselectColor
-//        updateFirestore()
     }
 }
 

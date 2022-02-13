@@ -10,16 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="InnerCollectionViewCell" customModule="Todo" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InnerCell" id="gTV-IL-0wX" customClass="InnerCollectionViewCell" customModule="Todo" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJT-Gj-bfC">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJT-Gj-bfC">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -27,6 +26,12 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="PJT-Gj-bfC" secondAttribute="trailing" id="KqH-h8-o7h"/>
+                <constraint firstItem="PJT-Gj-bfC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="brT-c8-wnk"/>
+                <constraint firstItem="PJT-Gj-bfC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mcc-G5-sYl"/>
+                <constraint firstAttribute="bottom" secondItem="PJT-Gj-bfC" secondAttribute="bottom" id="xsq-Tp-Kp1"/>
+            </constraints>
             <connections>
                 <outlet property="todoLabel" destination="PJT-Gj-bfC" id="ik7-pK-ky0"/>
             </connections>
