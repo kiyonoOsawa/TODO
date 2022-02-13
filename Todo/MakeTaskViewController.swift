@@ -52,7 +52,8 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
         
         let addData:[String: Any] = [
             "time":Timestamp(date: datePicker.date),
-            "content":textView.text,
+            "day": time,
+            "content":textView.text!,
             "redcolor": rgbRed,
             "greencolor": rgbGreen,
             "bluecolor": rgbBlue,
@@ -60,12 +61,14 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
         ]
         db.collection("users")
             .document(user.uid)
-            .collection(time)
+            .collection("tasks")
             .addDocument(data: addData)
     }
     
     @IBAction func savecontentButton() {
         updateFirestore()
+//        self.navigationController?.popViewController(animated: true)
+        print("前に戻る")
         self.dismiss(animated: true, completion: nil)
         present(alert, animated: true, completion: nil)
     }

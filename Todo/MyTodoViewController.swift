@@ -45,21 +45,28 @@ class MyTodoViewController: UIViewController {
                 self.addresses.removeAll()
                 for doc in querySnapshot.documents{
                     let timeStamp = doc.data()["time"] as! Timestamp
+                    let day = doc.data()["day"] as! String
                     let content = doc.data()["content"] as! String
-                    let rgbRed = doc.data()["red"] as! CGFloat
-                    let rgbGreen = doc.data()["green"] as! CGFloat
-                    let rgbBlue = doc.data()["blue"] as! CGFloat
+                    let rgbRed = doc.data()["redcolor"] as! CGFloat
+                    let rgbGreen = doc.data()["greencolor"] as! CGFloat
+                    let rgbBlue = doc.data()["bluecolor"] as! CGFloat
                     let alpha = doc.data()["alpha"] as! CGFloat
                     
                     let date: Date = timeStamp.dateValue()
                     
+                    self.timeArray.append(day)
+                    let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
+                    self.timeArray = orderedSet.array as! [String]
+                    
                     self.addresses.append(
                         ["time": date,
+                         "day": day,
                          "content": content,
-                         "red": rgbRed,
-                         "green": rgbGreen,
-                         "blue": rgbBlue,
-                         "alpha": alpha]
+                         "redcolor": rgbRed,
+                         "greencolor": rgbGreen,
+                         "bluecolor": rgbBlue,
+                         "alpha": alpha,
+                         "documentID": doc.documentID]
                     )
                     print("データ取り出し\(doc)")
                 }
@@ -70,6 +77,13 @@ class MyTodoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.OuterCollectionView.reloadData()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDateTodo"{
+            let vc = segue.destination as! DateTodoViewController
+            vc.addresses = self.addresses
+            vc.date = self.date
+        }
     }
 }
 
@@ -96,9 +110,15 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let space: CGFloat = 36
+        let space: CGFloat = 56
         let cellWidth: CGFloat = viewWidth - space
         let cellHeight: CGFloat = 160
         return CGSize(width: cellWidth, height: cellHeight)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        date = timeArray[indexPath.row]
+        self.performSegue(withIdentifier: "toDateTodo", sender: nil)
+    }
+    
 }

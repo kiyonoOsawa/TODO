@@ -29,8 +29,8 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXu-dV-XKy">
-                        <rect key="frame" x="5" y="5" width="35" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="10" y="10" width="36" height="39.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -40,10 +40,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="iAI-GG-8fz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="03D-dw-eRW"/>
-                <constraint firstItem="eXu-dV-XKy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="4Mv-21-sMo"/>
+                <constraint firstItem="eXu-dV-XKy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="M1O-oo-dEe"/>
                 <constraint firstAttribute="trailing" secondItem="iAI-GG-8fz" secondAttribute="trailing" id="OhJ-t7-Dx5"/>
-                <constraint firstItem="eXu-dV-XKy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="ZwQ-cm-vqd"/>
                 <constraint firstItem="iAI-GG-8fz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fmc-II-g4i"/>
+                <constraint firstItem="eXu-dV-XKy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="gHN-2h-Zj6"/>
                 <constraint firstAttribute="bottom" secondItem="iAI-GG-8fz" secondAttribute="bottom" id="ryZ-V4-rWf"/>
             </constraints>
             <size key="customSize" width="234" height="105"/>

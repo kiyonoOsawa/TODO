@@ -10,6 +10,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
+import FirebaseAuth
 
 class MakeUserViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,10 +23,19 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var toLogInButton: UIButton!
     
     let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
+    let user = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
         colorImage()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if user != nil {
+            transition()
+        } else {
+        }
     }
     
     @IBAction func tappedProfileButton(_ sender: Any) {
