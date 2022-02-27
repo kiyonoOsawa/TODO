@@ -11,6 +11,9 @@ import FirebaseStorage
 import FirebaseAuth
 import FirebaseFirestore
 
+protocol OuterCollectionViewCellDelegate: AnyObject {
+    func tappedCell(date: String)
+}
 class OuterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -19,12 +22,15 @@ class OuterCollectionViewCell: UICollectionViewCell {
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
     var taskArray: [[String:Any]] = []
+    var day = String()
+    weak var delegate: OuterCollectionViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal //横スクロール
         self.layer.cornerRadius = 12
+        InnerCollectionView.layer.cornerRadius = 12
         InnerCollectionView.collectionViewLayout = layout
         InnerCollectionView.delegate = self
         InnerCollectionView.dataSource = self
@@ -39,6 +45,7 @@ class OuterCollectionViewCell: UICollectionViewCell {
         for content in contentArray{
             let contentDate = content["day"] as! String
             if contentDate == date{
+                day = date
                 taskArray.append(content)
                 print(taskArray)
             }
@@ -49,6 +56,10 @@ class OuterCollectionViewCell: UICollectionViewCell {
 }
 
 extension OuterCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.tappedCell(date: self.day)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return taskArray.count

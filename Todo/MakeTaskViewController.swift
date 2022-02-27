@@ -28,6 +28,7 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     var rgbGreen = CGFloat()
     var rgbBlue = CGFloat()
     var alpha = CGFloat()
+    var isComplete: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,8 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
             "redcolor": rgbRed,
             "greencolor": rgbGreen,
             "bluecolor": rgbBlue,
-            "alpha":alpha
+            "alpha":alpha,
+            "isComplete": isComplete
         ]
         db.collection("users")
             .document(user.uid)

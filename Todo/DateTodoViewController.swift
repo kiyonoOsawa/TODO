@@ -25,8 +25,6 @@ class DateTodoViewController: UIViewController {
         super.viewDidLoad()
         
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "InnerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "InnerCell")
@@ -77,32 +75,85 @@ extension DateTodoViewController: UICollectionViewDelegate, UICollectionViewData
 //        }
 //    }
 //    func deletItem(indexPath: IndexPath){
-        let selectedDocID = addresses[indexPath.row]["documentID"] as! String
-        guard let user = user else{ return }
-        db.collection("users")
-            .document(user.uid)
-            .collection("tasks")
-            .document(selectedDocID)
-            .delete(){err in
-                if let err = err {
-                    print("Error removing document: \(err)")
-                } else {
-                    print("Document successfully removed!")
-                    self.taskArray.remove(at: indexPath.row)
-                    self.collectionView.reloadData()
-                    
-                    if self.taskArray.isEmpty {
-                        let preNC = self.navigationController!
-                        let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! MyTodoViewController
-                        
-                        preVC.timeArray.removeAll(where: {$0 == self.date})
-                        preVC.OuterCollectionView.reloadData()
-                    }
-                }
-            }
+//        let selectedDocID = addresses[indexPath.row]["documentID"] as! String
+//        guard let user = user else{ return }
+//        db.collection("users")
+//            .document(user.uid)
+//            .collection("tasks")
+//            .document(selectedDocID)
+//            .delete(){err in
+//                if let err = err {
+//                    print("Error removing document: \(err)")
+//                } else {
+//                    print("Document successfully removed!")
+//                    self.taskArray.remove(at: indexPath.row)
+//                    self.collectionView.reloadData()
+//
+//                    if self.taskArray.isEmpty {
+//                        let preNC = self.navigationController!
+//                        let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! MyTodoViewController
+//
+//                        preVC.timeArray.removeAll(where: {$0 == self.date})
+//                        preVC.OuterCollectionView.reloadData()
+//                    }
+//                }
+//            }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 80)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 12, bottom: 8, right: 12)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 24
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let actionProvider: ([UIMenuElement]) -> UIMenu? = { _ in
+            let complete = UIAction(title: "Complete", image: nil, identifier: UIAction.Identifier(rawValue: "complete")) { _ in
+                let selectedDocID = self.taskArray[indexPath.row]["documentID"] as! String
+                self.taskArray[indexPath.row]["isComplete"] = true
+                guard let user = self.user else { return }
+                self.db.collection("users")
+                    .document(user.uid)
+                    .collection("tasks")
+                    .document(selectedDocID)
+                    .setData(self.taskArray[indexPath.row], merge: true)
+                
+//                self.completeArray.append(self.taskArray[indexPath.row])
+//                self.taskArray.remove(at: indexPath.row)
+            }
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: UIAction.Identifier(rawValue: "delete")) {[self] _ in
+                let selectedDocID = self.taskArray[indexPath.row]["documentID"] as! String
+                guard let user = self.user else { return }
+                self.db.collection("users")
+                    .document(user.uid)
+                    .collection("tasks")
+                    .document(selectedDocID)
+                    .delete(){ err in
+                        if let err = err {
+                            
+                        } else {
+                            self.taskArray.remove(at: indexPath.row)
+                            self.collectionView.reloadData()
+                            
+                            if self.taskArray.isEmpty {
+                                let preNC = self.navigationController!
+                                let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! MyTodoViewController
+                                
+                                preVC.timeArray.removeAll(where: {$0 == self.date})
+                                preVC.OuterCollectionView.reloadData()
+                            }
+                        }
+                    }
+            }
+            delete.attributes = [.destructive]
+            return UIMenu(title: "menu", image: nil, identifier: nil, children: [complete, delete])
+        }
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: actionProvider)
     }
 }

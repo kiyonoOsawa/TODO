@@ -33,6 +33,7 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if user != nil {
+            print(user)
             transition()
         } else {
         }
@@ -61,6 +62,7 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().createUser(withEmail: emailText, password: passwordText) { FIRAuthDataResult, Error in
             guard let authResult = FIRAuthDataResult else {
                 print("error: SignUp")
+                print(Error)
                 return
             }
             let reference = self.storageRef.child("userProfile").child("\(authResult.user.uid).jpg")

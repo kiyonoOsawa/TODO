@@ -51,6 +51,7 @@ class MyTodoViewController: UIViewController {
                     let rgbGreen = doc.data()["greencolor"] as! CGFloat
                     let rgbBlue = doc.data()["bluecolor"] as! CGFloat
                     let alpha = doc.data()["alpha"] as! CGFloat
+                    let isComplete = doc.data()["isComplete"] as! Bool
                     
                     let date: Date = timeStamp.dateValue()
                     
@@ -66,12 +67,14 @@ class MyTodoViewController: UIViewController {
                          "greencolor": rgbGreen,
                          "bluecolor": rgbBlue,
                          "alpha": alpha,
-                         "documentID": doc.documentID]
+                         "documentID": doc.documentID,
+                         "isComplete": isComplete
+                        ]
                     )
                     print("データ取り出し\(doc)")
                 }
+                self.OuterCollectionView.reloadData()
             }
-        self.OuterCollectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,7 +90,12 @@ class MyTodoViewController: UIViewController {
     }
 }
 
-extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,OuterCollectionViewCellDelegate {
+    
+    func tappedCell(date: String) {
+        self.date = date
+        self.performSegue(withIdentifier: "toDailyTasks", sender: nil)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return timeArray.count
@@ -119,6 +127,14 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         date = timeArray[indexPath.row]
         self.performSegue(withIdentifier: "toDateTodo", sender: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 15, left: 10, bottom: 0, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
     
 }

@@ -10,12 +10,15 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseStorageUI
+import FirebaseAuth
 
-class DisplayGroupsViewController: UIViewController {
+class DisplayGroupsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var logOutButton: UIButton!
     
     let db = Firebase.Firestore.firestore()
+    let auth = Auth.auth()
     let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
     var addresses: [[String : String]] = []
     var groupId: String!
@@ -32,6 +35,7 @@ class DisplayGroupsViewController: UIViewController {
         
         viewWidth = view.frame.width
         
+        self.tabBarController?.tabBar.isHidden = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isScrollEnabled = true
@@ -50,10 +54,12 @@ class DisplayGroupsViewController: UIViewController {
                 
                 for doc in snapshot.documents{
                     let roomName = doc.data()["roomName"] as! String
+                    let roomNumber = doc.data()["roomNumber"] as! String
                     let docID = doc.documentID
                     //下から用意している配列に追加
                     self.addresses.append(["roomName": roomName,
-                                          "docID": docID])
+                                           "docID": docID,
+                                           "roomNumber": roomNumber])
                     self.collectionView.reloadData()
                 }
             }
@@ -65,6 +71,69 @@ class DisplayGroupsViewController: UIViewController {
             vc.sentGroupId = self.groupId
             print("groupId: \(groupId)")
         }
+    }
+    
+    @IBAction func tappedLogOut() {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            let nextVC = storyboard?.instantiateViewController(withIdentifier: "firstView")
+            nextVC?.modalPresentationStyle = .fullScreen
+            self.present(nextVC!, animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    func addGroupAlert(indexPath: IndexPath){
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.title = "Groupに参加"
+        alert.message = "GroupIDを入力"
+        
+        alert.addTextField(configurationHandler: {(textField) -> Void in
+            textField.delegate = self
+            
+        })
+        
+        var textField = UITextField()
+        var groupnumber = addresses[indexPath.row]["roomNumber"]!
+
+        alert.addAction(
+            UIAlertAction(
+                title: "参加",
+                style: .default,
+                handler: { [self](action) -> Void in
+                    if textField.text == groupnumber {
+                        self.groupId = self.addresses[indexPath.row]["docID"]!
+                        self.performSegue(withIdentifier: "toChat", sender: nil)
+                    } else {
+                        let alert = UIAlertController(title: nil, message: "GroupIDが違います", preferredStyle: .alert)
+                    }
+                    self.hello(action.title!)
+                })
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: "キャンセル",
+                style: .cancel,
+                handler: {(action) -> Void in
+                    self.hello(action.title!)
+                })
+        )
+        
+        self.present(
+            alert,
+            animated: true,
+            completion: {
+                print("アラートが表示された")
+            })
+    }
+    
+    func hello(_ msg: String) {
+        print(msg)
     }
 }
 
@@ -101,7 +170,6 @@ extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        groupId = addresses[indexPath.row]["docID"]!
-        self.performSegue(withIdentifier: "toChat", sender: nil)
+        self.addGroupAlert(indexPath: indexPath)
     }
 }

@@ -61,8 +61,8 @@
                                     <action selector="tappedAddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Ck-9A-NXx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9B-Rz-u6O">
-                                <rect key="frame" x="20" y="32" width="140" height="55"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make Chat Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9B-Rz-u6O">
+                                <rect key="frame" x="20" y="32" width="202" height="55"/>
                                 <fontDescription key="fontDescription" name="NotoSansMyanmar-Bold" family="Noto Sans Myanmar" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1432" y="739"/>
+            <point key="canvasLocation" x="2312" y="23"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="qjZ-qx-4Nt">
@@ -212,6 +212,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vYq-s4-5pR">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="6er-4Q-3nu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="lG6-En-ocl">
+                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="LogOut"/>
+                                <connections>
+                                    <action selector="tappedLogOut" destination="4uF-ZK-dWD" eventType="touchUpInside" id="aOx-hn-CsZ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="QhX-09-ZTg">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -221,6 +232,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="nZD-ru-zob" id="CBx-jh-7dh"/>
+                        <outlet property="logOutButton" destination="lG6-En-ocl" id="Ng9-lJ-Hb3"/>
                         <segue destination="blU-lU-eMi" kind="show" identifier="toChat" id="MfC-hf-K8W"/>
                     </connections>
                 </viewController>
@@ -228,11 +240,11 @@
             </objects>
             <point key="canvasLocation" x="587" y="23"/>
         </scene>
-        <!--group-->
+        <!--Chat-->
         <scene sceneID="L0j-XG-Y8N">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fjc-xz-0sH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="group" id="I0b-SJ-YXY"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Chat" id="I0b-SJ-YXY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JPA-PD-5rX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -250,7 +262,7 @@
         <!--Item-->
         <scene sceneID="VSH-1A-iTb">
             <objects>
-                <viewController id="T2P-Tb-zPU" customClass="MakeUserViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstView" id="T2P-Tb-zPU" customClass="MakeUserViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JUV-3y-K4p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -498,29 +510,6 @@
             </objects>
             <point key="canvasLocation" x="-2184" y="23"/>
         </scene>
-        <!--Search-->
-        <scene sceneID="D3w-q1-UjV">
-            <objects>
-                <viewController id="14q-UQ-AZO" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YeS-6o-qRD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-bL-lms">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="3Kl-KP-5O4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Search" id="wlh-mT-Mec"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gnp-Fr-XlD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-310" y="-713"/>
-        </scene>
         <!--My Todo View Controller-->
         <scene sceneID="eVE-6P-7Fd">
             <objects>
@@ -531,7 +520,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="af6-Gx-s5p">
                                 <rect key="frame" x="20" y="88" width="374" height="725"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YXj-Dw-vdZ">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YXj-Dw-vdZ">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -562,12 +551,12 @@
                     <connections>
                         <outlet property="OuterCollectionView" destination="af6-Gx-s5p" id="2hk-2f-JHd"/>
                         <outlet property="addButton" destination="2bO-9v-l02" id="X4z-pJ-5of"/>
-                        <segue destination="bN1-Np-KNc" kind="show" identifier="toDateTodo" id="3Dq-VM-my1"/>
+                        <segue destination="bN1-Np-KNc" kind="show" identifier="toDateTodo" destinationCreationSelector="toDailyTasks" id="3Dq-VM-my1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1X-8T-hRQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="600" y="-1467.1875"/>
+            <point key="canvasLocation" x="599" y="-739"/>
         </scene>
         <!--Make Task View Controller-->
         <scene sceneID="bET-5h-Qpp">
@@ -645,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eei-7e-Ceu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-310" y="-2174"/>
+            <point key="canvasLocation" x="599" y="-1542"/>
         </scene>
         <!--Date Todo View Controller-->
         <scene sceneID="12X-eK-zJ3">
@@ -658,7 +647,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dQI-5B-fIq">
                                 <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zfs-0G-ue2">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zfs-0G-ue2">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -683,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqj-4h-u71" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1597" y="-1467"/>
+            <point key="canvasLocation" x="1432" y="-739"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="9tk-HL-bHK">
@@ -698,9 +687,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="2vi-jJ-Klb" kind="relationship" relationship="viewControllers" id="PYM-Qs-CWt"/>
-                        <segue destination="14q-UQ-AZO" kind="relationship" relationship="viewControllers" id="nOg-36-ojA"/>
                         <segue destination="fjc-xz-0sH" kind="relationship" relationship="viewControllers" id="3J2-6I-eVL"/>
-                        <segue destination="ovd-7c-gzN" kind="relationship" relationship="viewControllers" id="Kbz-fP-M52"/>
+                        <segue destination="oPA-n5-vGV" kind="relationship" relationship="viewControllers" id="Kbz-fP-M52"/>
                         <segue destination="DW6-cp-7cL" kind="relationship" relationship="viewControllers" id="78x-O7-Xy1"/>
                     </connections>
                 </tabBarController>
@@ -715,6 +703,28 @@
                     <view key="view" contentMode="scaleToFill" id="fwn-Zm-XUb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtX-Yq-Au8">
+                                <rect key="frame" x="132" y="123" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHk-t7-5DO">
+                                <rect key="frame" x="186" y="357" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka8-JV-xAh">
+                                <rect key="frame" x="186" y="516" width="41" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="DOb-wq-Evg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -722,23 +732,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IyV-e8-Hcy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599" y="739"/>
+            <point key="canvasLocation" x="587" y="1465"/>
         </scene>
-        <!--Profile-->
+        <!--Profile View Controller-->
         <scene sceneID="XlF-pG-yVb">
             <objects>
-                <viewController id="ovd-7c-gzN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gl6-bl-35K">
+                <viewController id="ovd-7c-gzN" customClass="ProfileViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gl6-bl-35K" customClass="Profi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="m2y-zP-KGM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="4" title="Profile" id="qPp-4r-y0m"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="k0m-QJ-ncp"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4F-aW-ARQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-310" y="1501"/>
+            <point key="canvasLocation" x="600" y="738.61607142857144"/>
         </scene>
         <!--Todo-->
         <scene sceneID="LfH-q0-c58">
@@ -757,13 +769,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NYz-TF-cEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-310.14492753623193" y="-1467.1875"/>
+            <point key="canvasLocation" x="-310" y="-738"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="Wq6-oA-Vdu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DW6-cp-7cL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="09y-4T-A8J"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="09y-4T-A8J"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1D2-9P-eeG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -776,7 +788,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uzo-Me-f1W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-310" y="739"/>
+            <point key="canvasLocation" x="-310" y="1465"/>
+        </scene>
+        <!--Group-->
+        <scene sceneID="0ck-YR-tCW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oPA-n5-vGV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="4" title="Group" id="qPp-4r-y0m"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R3A-GJ-cIE">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ovd-7c-gzN" kind="relationship" relationship="rootViewController" id="KZJ-Zn-XTG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e99-SU-W2c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-310.14492753623193" y="738.61607142857144"/>
         </scene>
     </scenes>
     <resources>
