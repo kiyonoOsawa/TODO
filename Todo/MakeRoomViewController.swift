@@ -38,10 +38,12 @@ class MakeRoomViewController: UIViewController {
     }
     
     @IBAction func tappedAddButton(_ sender: Any) {
+        let emptyArray: [String] = []
         // データを追加
-        let addData = [
+        let addData: [String : Any] = [
             "roomName": roomNameTextField.text!,
-            "roomNumber": roomNumberTextField.text!]
+            "roomNumber": roomNumberTextField.text!,
+            "registeredUser": emptyArray]
         
         db.collection("groups")
             .addDocument(data: addData){ err in

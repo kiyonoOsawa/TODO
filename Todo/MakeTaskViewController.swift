@@ -17,11 +17,12 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var color: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var backButton: UIButton!
     
     let alert: UIAlertController = UIAlertController(title: "保存", message: "完了しました", preferredStyle: .alert)
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
-//    let userDefaults = UserDefaults.standard
+    //    let userDefaults = UserDefaults.standard
     var timeArray = [String]()
     var didselectColor = UIColor()
     var rgbRed = CGFloat()
@@ -32,9 +33,6 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if userDefaults.object(forKey: "time") != nil {
-//            timeArray = userDefaults.object(forKey: "time") as! [String]
-//        }
         uiImage()
     }
     
@@ -46,7 +44,7 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
         timeArray.append(time)
         let orderedSet: NSOrderedSet = NSOrderedSet(array: timeArray)
         timeArray = orderedSet.array as! [String]
-//        userDefaults.set(timeArray, forKey: "time")
+        //        userDefaults.set(timeArray, forKey: "time")
         
         let user = user
         guard let user = user else {return}
@@ -69,52 +67,55 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     
     @IBAction func savecontentButton() {
         updateFirestore()
-//        self.navigationController?.popViewController(animated: true)
+        //        self.navigationController?.popViewController(animated: true)
         print("前に戻る")
         self.dismiss(animated: true, completion: nil)
         present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tappedColor() {
-        showColorPicker()
+//        showColorPicker()
     }
     
     func uiImage() {
-        let Purple = UIColor(named: "Purple")
-        guard let Purple = Purple else { return }
         
         textView.layer.cornerRadius = 12
-        textView.layer.borderWidth = 1
-        textView.layer.borderColor = Purple.cgColor
         textView.layer.shadowOpacity = 0.2
         textView.layer.shadowColor = UIColor.black.cgColor
         textView.layer.shadowOffset = CGSize(width: 0, height: 0)
         textView.layer.masksToBounds = false
+        textView.textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        textView.sizeToFit()
         color.layer.cornerRadius = 20
         color.layer.borderWidth = 1
         color.layer.shadowColor = UIColor.black.cgColor
         color.setTitle("", for: .normal)
     }
     
-    func showColorPicker() {
-        let colorPicker = UIColorPickerViewController()
-        colorPicker.selectedColor = UIColor.black
-        colorPicker.delegate = self
-        self.present(colorPicker, animated: true, completion: nil)
-    }
     
-    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        print("選択した色:\(viewController.selectedColor)")
-        //        didselectColor = viewController.selectedColor
-    }
+//    func showColorPicker() {
+//        let colorPicker = UIColorPickerViewController()
+//        colorPicker.selectedColor = UIColor.black
+//        colorPicker.delegate = self
+//        self.present(colorPicker, animated: true, completion: nil)
+//    }
+//
+//    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+//        print("選択した色:\(viewController.selectedColor)")
+//        //        didselectColor = viewController.selectedColor
+//    }
+//
+//    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+//        rgbRed = viewController.selectedColor.redColor!
+//        rgbGreen = viewController.selectedColor.greenColor!
+//        rgbBlue = viewController.selectedColor.blueColor!
+//        alpha = viewController.selectedColor.alpha
+//        didselectColor = viewController.selectedColor
+//        color.backgroundColor = didselectColor
+//    }
     
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        rgbRed = viewController.selectedColor.redColor!
-        rgbGreen = viewController.selectedColor.greenColor!
-        rgbBlue = viewController.selectedColor.blueColor!
-        alpha = viewController.selectedColor.alpha
-        didselectColor = viewController.selectedColor
-        color.backgroundColor = didselectColor
+    @IBAction func tappedBackButton() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

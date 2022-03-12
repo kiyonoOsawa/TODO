@@ -26,6 +26,7 @@ class MyTodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.buttonImage()
         viewWidth = view.frame.width
         OuterCollectionView.delegate = self
         OuterCollectionView.dataSource = self
@@ -88,6 +89,28 @@ class MyTodoViewController: UIViewController {
             vc.date = self.date
         }
     }
+    
+    var startingFrame: CGRect!
+    var endingFrame: CGRect!
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) && self.addButton.isHidden {
+            self.addButton.isHidden = false
+            self.addButton.frame = startingFrame
+            UIView.animate(withDuration: 1.0) {
+                self.addButton.frame = self.endingFrame
+            }
+        }
+    }
+    
+    func configureSizes() {
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        startingFrame = CGRect(x: 0, y: screenHeight+100, width: screenWidth, height: 100)
+        endingFrame = CGRect(x: 0, y: screenHeight-100, width: screenWidth, height: 100)
+    }
 }
 
 extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,OuterCollectionViewCellDelegate {
@@ -135,6 +158,15 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+    
+    func buttonImage() {
+        addButton.layer.cornerRadius = 35
+        addButton.layer.shadowOpacity = 0.4
+//        addButton.layer.shadowRadius = 5.0
+        addButton.layer.shadowColor = UIColor.black.cgColor
+        addButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        addButton.layer.masksToBounds = false
     }
     
 }

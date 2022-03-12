@@ -10,10 +10,18 @@ import UIKit
 class InnerCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var todoLabel: UILabel!
+    
+    let label = UILabel(frame: .zero)
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        label.lineBreakMode = .byWordWrapping
+        self.layer.cornerRadius = 5
+        self.uiImage()
+    }
+    
+    func uiImage() {
+        todoLabel.layer.cornerRadius = 5
     }
 
 }
