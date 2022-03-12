@@ -20,7 +20,8 @@ class DisplayGroupsViewController: UIViewController, UITextFieldDelegate {
     let db = Firebase.Firestore.firestore()
     let auth = Auth.auth()
     let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
-    var addresses: [[String : String]] = []
+    let user = Auth.auth().currentUser
+    var addresses: [[String : Any]] = []
     var groupId: String!
     var viewWidth: CGFloat! // viewの横幅
     var viewHeight: CGFloat! // viewの縦幅
@@ -118,40 +119,48 @@ class DisplayGroupsViewController: UIViewController, UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
     }
 }
+
+extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        addresses.count
+    }
     
-    extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            addresses.count
-        }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
-            
-            cell.layer.cornerRadius = 12
-            cell.layer.shadowOpacity = 0.4 // 影の濃さ
-            cell.layer.shadowColor = UIColor.black.cgColor
-            cell.layer.shadowOffset = CGSize(width: 2, height: 2)
-            cell.layer.masksToBounds = false
-            cell.groupName.text = addresses[indexPath.row]["roomName"]
-            
-            let groupName: String = addresses[indexPath.row]["roomName"]!
-            let reference = storageRef.child("groupProfile").child("\(groupName).jpg")
-            cell.groupImage.sd_setImage(with: reference)
-            
-            return cell
-            
-        }
+        cell.layer.cornerRadius = 12
+        cell.layer.shadowOpacity = 0.4 // 影の濃さ
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+        cell.layer.masksToBounds = false
+        cell.groupName.text = addresses[indexPath.row]["roomName"] as! String
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            
-            let space: CGFloat = 50
-            let cellWidth: CGFloat = viewWidth - space
-            let cellHeight: CGFloat = 80
-            return CGSize(width: cellWidth, height: cellHeight)
-            
-        }
+        let groupName: String = addresses[indexPath.row]["roomName"] as! String
+        let reference = storageRef.child("groupProfile").child("\(groupName).jpg")
+        cell.groupImage.sd_setImage(with: reference)
         
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let space: CGFloat = 50
+        let cellWidth: CGFloat = viewWidth - space
+        let cellHeight: CGFloat = 80
+        return CGSize(width: cellWidth, height: cellHeight)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let registeredUserArray: [String] = self.addresses[indexPath.row]["registeredUser"]as! [String]
+        guard let user = self.user else {return}
+        
+        if registeredUserArray.contains(user.uid){
+            self.groupId = self.addresses[indexPath.row]["docID"] as! String
+            self.performSegue(withIdentifier: "toChat", sender: nil)
+        } else {
             self.addGroupAlert(indexPath: indexPath)
         }
     }
+}
