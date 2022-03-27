@@ -74,7 +74,7 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     }
     
     @IBAction func tappedColor() {
-//        showColorPicker()
+        showColorPicker()
     }
     
     func uiImage() {
@@ -93,26 +93,26 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     }
     
     
-//    func showColorPicker() {
-//        let colorPicker = UIColorPickerViewController()
-//        colorPicker.selectedColor = UIColor.black
-//        colorPicker.delegate = self
-//        self.present(colorPicker, animated: true, completion: nil)
-//    }
-//
-//    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-//        print("選択した色:\(viewController.selectedColor)")
-//        //        didselectColor = viewController.selectedColor
-//    }
-//
-//    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-//        rgbRed = viewController.selectedColor.redColor!
-//        rgbGreen = viewController.selectedColor.greenColor!
-//        rgbBlue = viewController.selectedColor.blueColor!
-//        alpha = viewController.selectedColor.alpha
-//        didselectColor = viewController.selectedColor
-//        color.backgroundColor = didselectColor
-//    }
+    func showColorPicker() {
+        let colorPicker = UIColorPickerViewController()
+        colorPicker.selectedColor = UIColor.black
+        colorPicker.delegate = self
+        self.present(colorPicker, animated: true, completion: nil)
+    }
+
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        print("選択した色:\(viewController.selectedColor)")
+                didselectColor = viewController.selectedColor
+    }
+
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        rgbRed = viewController.selectedColor.redColor!
+        rgbGreen = viewController.selectedColor.greenColor!
+        rgbBlue = viewController.selectedColor.blueColor!
+        alpha = viewController.selectedColor.alpha
+        didselectColor = viewController.selectedColor
+        color.backgroundColor = didselectColor
+    }
     
     @IBAction func tappedBackButton() {
         self.dismiss(animated: true, completion: nil)

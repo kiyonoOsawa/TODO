@@ -34,8 +34,9 @@ class SignInViewController: UIViewController {
         auth.signIn(withEmail: emailText, password: passwordText) { AuthDataResult, Error in
             if let err = Error{
                 print("error: \(err)")
+            } else {
+                self.transition()
             }
-            self.transition()
         }
     }
     

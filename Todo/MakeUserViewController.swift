@@ -21,6 +21,9 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var toLogInButton: UIButton!
+    @IBOutlet weak var error1: UILabel!
+    @IBOutlet weak var error2: UILabel!
+    @IBOutlet weak var error3: UILabel!
     
     let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
     let user = Auth.auth().currentUser
@@ -32,6 +35,9 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.error1.isHidden = true
+        self.error2.isHidden = true
+        self.error3.isHidden = true
         if user != nil {
             print(user)
             transition()
@@ -49,6 +55,14 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func tappedSignUpButton(_ sender: Any) {
+        if (emailTextField.text?.isEmpty == true) || (userNameTextField.text?.isEmpty == true) || (passWordTextField.text?.isEmpty == true) || (userProfileButton.imageView?.image == nil) {
+            let alert = UIAlertController(title: "", message: "プロフィール画像,e-mail,名前,パスワードを全て入力してください", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
+        
         if emailTextField.text != nil && passWordTextField.text != nil{
             createUser(emailText: emailTextField.text!, passwordText: passWordTextField.text!)
         }
@@ -60,9 +74,23 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
     
     func createUser(emailText: String, passwordText: String){
         Auth.auth().createUser(withEmail: emailText, password: passwordText) { FIRAuthDataResult, Error in
+            if Error == nil {
+            } else {
+                if let errCode = AuthErrorCode(rawValue: Error!._code) {
+                    switch errCode {
+                    case .invalidEmail: self.error1.isHidden = false
+                        // メールアドレスの形式が違います。
+                    case .emailAlreadyInUse: self.error2.isHidden = false
+                        // このメールアドレスはすでに使われています。
+                    case .weakPassword: self.error3.isHidden = false
+                        // パスワードは6文字以上で入力してください。
+                    default: break
+                    }
+                }
+            }
             guard let authResult = FIRAuthDataResult else {
                 print("error: SignUp")
-                print(Error)
+                print(Error.debugDescription)
                 return
             }
             let reference = self.storageRef.child("userProfile").child("\(authResult.user.uid).jpg")
@@ -100,7 +128,7 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
         
         let Purple = UIColor(named: "Purple")
         guard let Purple = Purple else { return }
-       
+        
         //emailTextField
         for textFieldImage in textFieldImage {
             textFieldImage.layer.cornerRadius = 24

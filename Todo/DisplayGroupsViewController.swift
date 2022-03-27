@@ -75,18 +75,18 @@ class DisplayGroupsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func tappedLogOut() {
-        
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            let nextVC = storyboard?.instantiateViewController(withIdentifier: "firstView")
-            nextVC?.modalPresentationStyle = .fullScreen
-            self.present(nextVC!, animated: true, completion: nil)
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-    }
+//    @IBAction func tappedLogOut() {
+//
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//            let nextVC = storyboard?.instantiateViewController(withIdentifier: "firstView")
+//            nextVC?.modalPresentationStyle = .fullScreen
+//            self.present(nextVC!, animated: true, completion: nil)
+//        } catch let signOutError as NSError {
+//            print("Error signing out: %@", signOutError)
+//        }
+//    }
     
     func addGroupAlert(indexPath: IndexPath){
         
@@ -157,7 +157,7 @@ extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionVie
         guard let user = self.user else {return}
         
         if registeredUserArray.contains(user.uid){
-            self.groupId = self.addresses[indexPath.row]["docID"] as! String
+            self.groupId = self.addresses[indexPath.row]["docID"] as? String
             self.performSegue(withIdentifier: "toChat", sender: nil)
         } else {
             self.addGroupAlert(indexPath: indexPath)
