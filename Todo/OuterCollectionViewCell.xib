@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iAI-GG-8fz">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="130"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="87"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NQG-sh-1q2">
                             <size key="itemSize" width="128" height="128"/>
@@ -55,11 +55,11 @@
                 <constraint firstAttribute="bottom" secondItem="eXu-dV-XKy" secondAttribute="bottom" constant="15" id="RGe-At-1Rt"/>
                 <constraint firstItem="iAI-GG-8fz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fmc-II-g4i"/>
                 <constraint firstItem="uYm-no-WC8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="jjV-3K-Wka"/>
-                <constraint firstAttribute="bottom" secondItem="iAI-GG-8fz" secondAttribute="bottom" id="ryZ-V4-rWf"/>
+                <constraint firstAttribute="bottom" secondItem="iAI-GG-8fz" secondAttribute="bottom" constant="43" id="ryZ-V4-rWf"/>
             </constraints>
             <size key="customSize" width="234" height="134"/>
             <connections>
-                <outlet property="InnerCollectionView" destination="iAI-GG-8fz" id="Lvh-Fm-zOZ"/>
+                <outlet property="HomeInnerCollectionViewCell" destination="iAI-GG-8fz" id="xQU-Qf-bBb"/>
                 <outlet property="dateLabel" destination="eXu-dV-XKy" id="2u8-V5-tK2"/>
             </connections>
             <point key="canvasLocation" x="121.73913043478262" y="61.607142857142854"/>

@@ -41,7 +41,25 @@ class MyTodoViewController: UIViewController {
             .collection("tasks")
             .order(by: "time", descending: false)
             .addSnapshotListener{QuerySnapshot, Error in
-                guard let querySnapshot = QuerySnapshot else {return}
+                guard let querySnapshot = QuerySnapshot else {
+                    
+//                    let dt
+//                    self.addresses.append(
+//                        ["time": date,
+//                         "day": nil,
+//                         "content": nil,
+//                         "redcolor": 0,
+//                         "greencolor": 0,
+//                         "bluecolor": 0,
+//                         "alpha": 0,
+//                         "documentID": nil,
+//                         "isComplete": nil
+//                        ]
+//                        )
+                    
+                    return
+                    
+                }
                 
                 self.addresses.removeAll()
                 for doc in querySnapshot.documents{

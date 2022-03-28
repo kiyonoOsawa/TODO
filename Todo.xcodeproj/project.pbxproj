@@ -35,6 +35,8 @@
 		CE398C1B2793F620005BBFA7 /* MyTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE398C1A2793F620005BBFA7 /* MyTodoViewController.swift */; };
 		CE398C212793F7DD005BBFA7 /* MakeTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE398C202793F7DD005BBFA7 /* MakeTaskViewController.swift */; };
 		CE76B02527CB211600F2532F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76B02427CB211600F2532F /* ProfileViewController.swift */; };
+		CE9E176E27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E176C27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.swift */; };
+		CE9E176F27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9E176D27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.xib */; };
 		CEA045E0279B9CED00F61993 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA045DF279B9CED00F61993 /* TabBarViewController.swift */; };
 		CEC083C827A659E2003B42BA /* InnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC083C627A659E2003B42BA /* InnerCollectionViewCell.swift */; };
 		CEC083C927A659E2003B42BA /* InnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC083C727A659E2003B42BA /* InnerCollectionViewCell.xib */; };
@@ -100,6 +102,8 @@
 		CE398C1A2793F620005BBFA7 /* MyTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoViewController.swift; sourceTree = "<group>"; };
 		CE398C202793F7DD005BBFA7 /* MakeTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTaskViewController.swift; sourceTree = "<group>"; };
 		CE76B02427CB211600F2532F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CE9E176C27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInnerCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE9E176D27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeInnerCollectionViewCell.xib; sourceTree = "<group>"; };
 		CEA045DF279B9CED00F61993 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CEC083C627A659E2003B42BA /* InnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEC083C727A659E2003B42BA /* InnerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InnerCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 				CEC083C727A659E2003B42BA /* InnerCollectionViewCell.xib */,
 				CEC083CA27A659F3003B42BA /* OuterCollectionViewCell.swift */,
 				CEC083CB27A659F3003B42BA /* OuterCollectionViewCell.xib */,
+				CE9E176C27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.swift */,
+				CE9E176D27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.xib */,
 				6C73B3442740B5C800BB8E27 /* CollectionViewCell.swift */,
 				6C73B3452740B5C800BB8E27 /* CollectionViewCell.xib */,
 				6CB18C822740E73000C5F54F /* ChatTableViewCell.swift */,
@@ -353,6 +359,7 @@
 				6C0653A22740AD7B0068508C /* Main.storyboard in Resources */,
 				6C73B3472740B5C800BB8E27 /* CollectionViewCell.xib in Resources */,
 				6CEB06F127534E8F0067AA74 /* InputAccesoryView.xib in Resources */,
+				CE9E176F27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.xib in Resources */,
 				CEC083C927A659E2003B42BA /* InnerCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +500,7 @@
 				CE76B02527CB211600F2532F /* ProfileViewController.swift in Sources */,
 				6C06539B2740AD7B0068508C /* AppDelegate.swift in Sources */,
 				6C06539D2740AD7B0068508C /* SceneDelegate.swift in Sources */,
+				CE9E176E27F1DC3C00AA8076 /* HomeInnerCollectionViewCell.swift in Sources */,
 				6CB18C842740E73000C5F54F /* ChatTableViewCell.swift in Sources */,
 				CEC083C827A659E2003B42BA /* InnerCollectionViewCell.swift in Sources */,
 				6C61C65B2765C91B0062028C /* SignInViewController.swift in Sources */,
