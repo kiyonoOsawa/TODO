@@ -12,7 +12,6 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabBar.items![0].image = UIImage(named: "todo")!
     }
 
 }

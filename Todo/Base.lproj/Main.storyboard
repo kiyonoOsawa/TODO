@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -160,11 +159,11 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o8a-ez-FGQ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="708"/>
-                                <color key="backgroundColor" name="BackColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wTa-oQ-Qhi"/>
-                        <color key="backgroundColor" name="BackColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="o8a-ez-FGQ" firstAttribute="top" secondItem="wTa-oQ-Qhi" secondAttribute="top" id="4Gb-eu-mRv"/>
                             <constraint firstItem="o8a-ez-FGQ" firstAttribute="leading" secondItem="wTa-oQ-Qhi" secondAttribute="leading" id="ATv-kO-8jJ"/>
@@ -227,11 +226,11 @@
             </objects>
             <point key="canvasLocation" x="587" y="23"/>
         </scene>
-        <!--Chat-->
+        <!--Navigation Controller-->
         <scene sceneID="L0j-XG-Y8N">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fjc-xz-0sH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Chat" id="I0b-SJ-YXY"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="c 1x" selectedImage="c_d 1x" id="I0b-SJ-YXY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JPA-PD-5rX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -903,11 +902,11 @@
             </objects>
             <point key="canvasLocation" x="600" y="738.61607142857144"/>
         </scene>
-        <!--Todo-->
+        <!--Navigation Controller-->
         <scene sceneID="LfH-q0-c58">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2vi-jJ-Klb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Todo" id="FdV-4y-YzX"/>
+                    <tabBarItem key="tabBarItem" title="" image="h 1x" selectedImage="h_d 1x" id="FdV-4y-YzX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dPm-bX-fXG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -922,11 +921,13 @@
             </objects>
             <point key="canvasLocation" x="-310" y="-738"/>
         </scene>
-        <!--Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="Wq6-oA-Vdu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DW6-cp-7cL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="09y-4T-A8J"/>
+                    <tabBarItem key="tabBarItem" title="" image="p 1x" selectedImage="p_d 1x" id="09y-4T-A8J">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1D2-9P-eeG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -941,11 +942,11 @@
             </objects>
             <point key="canvasLocation" x="-310" y="1465"/>
         </scene>
-        <!--Group-->
+        <!--Navigation Controller-->
         <scene sceneID="0ck-YR-tCW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oPA-n5-vGV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="4" title="Group" id="qPp-4r-y0m"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="" image="g 1x" selectedImage="g_d 1x" id="qPp-4r-y0m"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R3A-GJ-cIE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -962,10 +963,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="c 1x" width="24" height="24"/>
+        <image name="c_d 1x" width="24" height="24"/>
+        <image name="g 1x" width="24" height="24"/>
+        <image name="g_d 1x" width="24" height="24"/>
+        <image name="h 1x" width="24" height="24"/>
+        <image name="h_d 1x" width="24" height="24"/>
         <image name="login-image" width="500" height="501"/>
-        <namedColor name="BackColor">
-            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="p 1x" width="24" height="24"/>
+        <image name="p_d 1x" width="24" height="24"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,7 +9,7 @@ import UIKit
 
 class ChatTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var classmateTextVIew: UITextView!
+    @IBOutlet weak var classmateTextView: UITextView!
     @IBOutlet weak var classmateImageView: UIImageView!
     @IBOutlet weak var textViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var myTextView: UITextView!
@@ -23,7 +23,7 @@ class ChatTableViewCell: UITableViewCell {
             
             textViewWidthConstraint.constant = width
             //textViewの文字を取得
-            classmateTextVIew.text = message
+            classmateTextView.text = message
         }
     }
     
@@ -31,7 +31,7 @@ class ChatTableViewCell: UITableViewCell {
         didSet{
             guard let message = myMessageText else {return}
             myTextView.isHidden = false
-            classmateTextVIew.isHidden = true
+            classmateTextView.isHidden = true
             let width = estimateTextViewSize(text: message).width + 20
             myTextViewConstraint.constant = width
             myTextView.text = message
@@ -56,17 +56,17 @@ class ChatTableViewCell: UITableViewCell {
         classmateImageView.layer.borderColor = UIColor.lightGray.cgColor
         classmateImageView.layer.masksToBounds = true
         
-        classmateTextVIew.layer.cornerRadius = 12
-        classmateTextVIew.layer.shadowOpacity = 0.25
-        classmateTextVIew.layer.shadowColor = UIColor.black.cgColor
-        classmateTextVIew.layer.shadowOffset = CGSize(width: 2, height: 3)
-        classmateTextVIew.layer.masksToBounds = false
+        classmateTextView.layer.cornerRadius = 12
+        classmateTextView.layer.shadowOpacity = 0.25
+        classmateTextView.layer.shadowColor = UIColor.black.cgColor
+        classmateTextView.layer.shadowOffset = CGSize(width: 2, height: 3)
+        classmateTextView.layer.masksToBounds = false
         //textviewの編集可否
-        classmateTextVIew.isEditable = false
+        classmateTextView.isEditable = false
         //textviewの選択の可否
-        classmateTextVIew.isSelectable = false
+        classmateTextView.isSelectable = false
         //textviewの長さに応じてセルの高さが決まるように
-        classmateTextVIew.isScrollEnabled = false
+        classmateTextView.isScrollEnabled = false
         myTextView.layer.cornerRadius = 12
         myTextView.isScrollEnabled = false
         myTextView.isEditable = false

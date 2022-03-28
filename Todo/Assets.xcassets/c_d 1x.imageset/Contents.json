@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "profile.png",
+      "filename" : "c_d 1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "c_d 2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "c_d 3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -17,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

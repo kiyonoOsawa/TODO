@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +21,7 @@
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rYb-Sn-G9h">
                         <rect key="frame" x="64" y="22" width="200" height="26"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="pMh-7k-JoV"/>
                         </constraints>
@@ -37,7 +38,7 @@
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-eZ-STU">
                         <rect key="frame" x="100" y="16" width="200" height="38"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="jaA-VB-lCp"/>
                         </constraints>
@@ -61,7 +62,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="classmateImageView" destination="ONv-5A-lCh" id="Zg6-fO-JOE"/>
-                <outlet property="classmateTextVIew" destination="rYb-Sn-G9h" id="FUg-Lw-g7A"/>
+                <outlet property="classmateTextView" destination="rYb-Sn-G9h" id="FUg-Lw-g7A"/>
                 <outlet property="myTextView" destination="Xba-eZ-STU" id="8eB-7U-hBs"/>
                 <outlet property="myTextViewConstraint" destination="jaA-VB-lCp" id="KZ2-8T-HWY"/>
                 <outlet property="textViewWidthConstraint" destination="pMh-7k-JoV" id="PdQ-bI-bfW"/>
@@ -70,11 +71,11 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="BackColor">
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

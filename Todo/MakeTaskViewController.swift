@@ -95,7 +95,7 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
     
     func showColorPicker() {
         let colorPicker = UIColorPickerViewController()
-        colorPicker.selectedColor = UIColor.black
+        colorPicker.selectedColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         colorPicker.delegate = self
         self.present(colorPicker, animated: true, completion: nil)
     }
