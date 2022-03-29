@@ -182,8 +182,9 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if taskIsNull == true {
             cell.taskCountLabel.text = "0"
         } else {
-            cell.taskCountLabel.text = String(addresses.count)
-//            print("hoge",timeArray.count)
+            let filList = addresses.filter{$0["day"] as! String == timeArray[indexPath.row]}
+            cell.taskCountLabel.text = String(filList.count)
+            print("hoge",addresses)
         }
         cell.configureCell(contentArray: addresses, date: timeArray[indexPath.row])
         
