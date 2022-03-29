@@ -18,6 +18,8 @@ class ChatTableViewCell: UITableViewCell {
     var classmateMessageText: String? {
         didSet{
             guard let message = classmateMessageText else {return}
+            myTextView.isHidden = true
+            classmateTextView.isHidden = false
             //文字数からtextViewの幅を設定する
             let width = estimateTextViewSize(text: message).width + 20
             
@@ -53,7 +55,7 @@ class ChatTableViewCell: UITableViewCell {
     
     func updateUI() {
         classmateImageView.layer.cornerRadius = 20
-        classmateImageView.layer.borderColor = UIColor.lightGray.cgColor
+        classmateImageView.layer.borderColor = UIColor.white.cgColor
         classmateImageView.layer.masksToBounds = true
         
         classmateTextView.layer.cornerRadius = 12

@@ -37,17 +37,16 @@ class MyTodoViewController: UIViewController {
         OuterCollectionView.allowsSelection = true
         OuterCollectionView.isUserInteractionEnabled = true
         
-        taskIsNull = false
-        
+
     }
     
     func dayTaskIsNull() {
         
         let now = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy年MM月dd日", options: 0, locale: Locale(identifier: "ja_JP"))
+        dateFormatter.dateFormat =  "yyyy年MM月dd日"
         print("わかりやすい文字列",dateFormatter.string(from: now))
-        let day = dateFormatter.dateFormat
+        let day = dateFormatter.string(from: now)
         let content = ""
         let rgbRed = CGFloat(0.0)
         let rgbGreen = CGFloat(0.0)
@@ -73,9 +72,12 @@ class MyTodoViewController: UIViewController {
             ]
         )
         self.OuterCollectionView.reloadData()
+        taskIsNull = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        taskIsNull = false
+        
         print("アッピアー")
         super.viewWillAppear(animated)
         self.OuterCollectionView.reloadData()
@@ -181,6 +183,7 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.dateLabel.text = timeArray[indexPath.row]
         if taskIsNull == true {
             cell.taskCountLabel.text = "0"
+            print("こことおった")
         } else {
             cell.taskCountLabel.text = String(addresses.count)
 //            print("hoge",timeArray.count)
