@@ -21,6 +21,9 @@
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iAI-GG-8fz">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="87"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="280" id="rec-7W-4nx"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NQG-sh-1q2">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,9 +39,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-no-WC8">
                         <rect key="frame" x="20" y="88" width="47" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="27" id="PvE-ut-E3M"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -56,11 +56,13 @@
                 <constraint firstItem="iAI-GG-8fz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fmc-II-g4i"/>
                 <constraint firstItem="uYm-no-WC8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="jjV-3K-Wka"/>
                 <constraint firstAttribute="bottom" secondItem="iAI-GG-8fz" secondAttribute="bottom" constant="43" id="ryZ-V4-rWf"/>
+                <constraint firstItem="uYm-no-WC8" firstAttribute="top" secondItem="iAI-GG-8fz" secondAttribute="bottom" constant="1" id="uQ9-Kt-MwH"/>
             </constraints>
             <size key="customSize" width="234" height="134"/>
             <connections>
-                <outlet property="HomeInnerCollectionViewCell" destination="iAI-GG-8fz" id="xQU-Qf-bBb"/>
+                <outlet property="HomeCollectionView" destination="iAI-GG-8fz" id="xQU-Qf-bBb"/>
                 <outlet property="dateLabel" destination="eXu-dV-XKy" id="2u8-V5-tK2"/>
+                <outlet property="taskCountLabel" destination="uYm-no-WC8" id="IxW-z4-et2"/>
             </connections>
             <point key="canvasLocation" x="121.73913043478262" y="61.607142857142854"/>
         </collectionViewCell>

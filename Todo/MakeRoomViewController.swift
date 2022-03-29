@@ -72,7 +72,7 @@ class MakeRoomViewController: UIViewController {
         //emailTextField
         for textFieldImage in textFieldImage {
             textFieldImage.layer.cornerRadius = 20
-            textFieldImage.backgroundColor = UIColor.white
+//            textFieldImage.backgroundColor = UIColor.white
             textFieldImage.layer.borderWidth = 1
             textFieldImage.layer.borderColor = Purple.cgColor
             textFieldImage.layer.shadowOpacity = 0.5

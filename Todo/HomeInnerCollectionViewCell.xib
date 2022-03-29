@@ -11,14 +11,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeInnerCollectionViewCell" customModule="Todo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+            <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2R-V3-8wi">
-                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                        <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
             <connections>
                 <outlet property="todoLabel" destination="I2R-V3-8wi" id="PTs-aS-N1I"/>
             </connections>
-            <point key="canvasLocation" x="139" y="103"/>
+            <point key="canvasLocation" x="138.40579710144928" y="102.79017857142857"/>
         </collectionViewCell>
     </objects>
 </document>

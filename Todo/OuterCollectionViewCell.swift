@@ -17,7 +17,8 @@ protocol OuterCollectionViewCellDelegate: AnyObject {
 class OuterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var HomeInnerCollectionViewCell: UICollectionView!
+    @IBOutlet weak var HomeCollectionView: UICollectionView!
+    @IBOutlet weak var taskCountLabel: UILabel!
     
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
@@ -28,16 +29,14 @@ class OuterCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal //横スクロール
-        self.layer.cornerRadius = 4
-        HomeInnerCollectionViewCell.layer.cornerRadius = 4
-        HomeInnerCollectionViewCell.collectionViewLayout = layout
-        HomeInnerCollectionViewCell.delegate = self
-        HomeInnerCollectionViewCell.dataSource = self
-        HomeInnerCollectionViewCell.allowsSelection = false
-        HomeInnerCollectionViewCell.isUserInteractionEnabled = false
-        HomeInnerCollectionViewCell.isScrollEnabled = true
-        HomeInnerCollectionViewCell.register(UINib(nibName: "HomeInnerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "InnerCell")
+        layout.minimumLineSpacing = 10
+        HomeCollectionView.layer.cornerRadius = 10
+        HomeCollectionView.collectionViewLayout = layout
+        HomeCollectionView.delegate = self
+        HomeCollectionView.dataSource = self
+        HomeCollectionView.allowsSelection = false
+        HomeCollectionView.isUserInteractionEnabled = false
+        HomeCollectionView.register(UINib(nibName: "HomeInnerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "InnerCell")
     }
     
     func configureCell(contentArray: [[String:Any]], date: String) {
@@ -49,7 +48,7 @@ class OuterCollectionViewCell: UICollectionViewCell {
                 taskArray.append(content)
                 print(taskArray)
             }
-            self.HomeInnerCollectionViewCell.reloadData()
+            self.HomeCollectionView.reloadData()
         }
     }
     
@@ -66,7 +65,7 @@ extension OuterCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = HomeInnerCollectionViewCell.dequeueReusableCell(withReuseIdentifier: "InnerCell", for: indexPath) as! HomeInnerCollectionViewCell
+        let cell = HomeCollectionView.dequeueReusableCell(withReuseIdentifier: "InnerCell", for: indexPath) as! HomeInnerCollectionViewCell
         
         let rgbRed = taskArray[indexPath.row]["redcolor"] as! CGFloat
         let rgbBlue = taskArray[indexPath.row]["bluecolor"] as! CGFloat
@@ -74,23 +73,22 @@ extension OuterCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
         let alpha = taskArray[indexPath.row]["alpha"] as! CGFloat
         
         cell.backgroundColor = UIColor(red: rgbRed, green: rgbGreen, blue: rgbBlue, alpha: alpha)
-        cell.todoLabel.text = taskArray[indexPath.row]["content"] as? String
+//        cell.todoLabel.text = taskArray[indexPath.row]["content"] as? String
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width / 4 - 45, height: collectionView.frame.size.width / 4 - 45)
-
+        return CGSize(width: 33, height: 33)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 24
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
     
     
     

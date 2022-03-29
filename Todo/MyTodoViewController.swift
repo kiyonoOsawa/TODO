@@ -23,6 +23,9 @@ class MyTodoViewController: UIViewController {
     var timeArray = [String]()
     var addresses: [[String : Any]] = []
     var date = String()
+    var startingFrame: CGRect!
+    var endingFrame: CGRect!
+    var taskIsNull: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,49 @@ class MyTodoViewController: UIViewController {
         OuterCollectionView.allowsSelection = true
         OuterCollectionView.isUserInteractionEnabled = true
         
+        taskIsNull = false
+        
+    }
+    
+    func dayTaskIsNull() {
+        
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy年MM月dd日", options: 0, locale: Locale(identifier: "ja_JP"))
+        print("わかりやすい文字列",dateFormatter.string(from: now))
+        let day = dateFormatter.dateFormat
+        let content = ""
+        let rgbRed = CGFloat(0.0)
+        let rgbGreen = CGFloat(0.0)
+        let rgbBlue = CGFloat(0.0)
+        let alpha = CGFloat(0.0)
+        let isComplete = false
+        
+//        let date: Date = Date ()
+        self.timeArray.append(dateFormatter.string(from: now))
+        let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
+        self.timeArray = orderedSet.array as! [String]
+        
+        self.addresses.append(
+            ["time": date,
+             "day": day,
+             "content": content,
+             "redcolor": rgbRed,
+             "greencolor": rgbGreen,
+             "bluecolor": rgbBlue,
+             "alpha": alpha,
+             "documentID": nil,
+             "isComplete": isComplete
+            ]
+        )
+        self.OuterCollectionView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("アッピアー")
+        super.viewWillAppear(animated)
+        self.OuterCollectionView.reloadData()
+        
         guard let user = user else { return }
         
         db.collection("users")
@@ -41,27 +87,16 @@ class MyTodoViewController: UIViewController {
             .collection("tasks")
             .order(by: "time", descending: false)
             .addSnapshotListener{QuerySnapshot, Error in
-                guard let querySnapshot = QuerySnapshot else {
-                    
-//                    let dt
-//                    self.addresses.append(
-//                        ["time": date,
-//                         "day": nil,
-//                         "content": nil,
-//                         "redcolor": 0,
-//                         "greencolor": 0,
-//                         "bluecolor": 0,
-//                         "alpha": 0,
-//                         "documentID": nil,
-//                         "isComplete": nil
-//                        ]
-//                        )
-                    
-                    return
-                    
-                }
+                guard let querySnapshot = QuerySnapshot else {return}
                 
                 self.addresses.removeAll()
+                
+                if querySnapshot.documents.count == Optional(0) {
+                    self.dayTaskIsNull()
+                    self.taskIsNull = true
+                    return
+                }
+                
                 for doc in querySnapshot.documents{
                     let timeStamp = doc.data()["time"] as! Timestamp
                     let day = doc.data()["day"] as! String
@@ -95,11 +130,6 @@ class MyTodoViewController: UIViewController {
                 self.OuterCollectionView.reloadData()
             }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.OuterCollectionView.reloadData()
-    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDateTodo"{
             let vc = segue.destination as! DateTodoViewController
@@ -107,9 +137,6 @@ class MyTodoViewController: UIViewController {
             vc.date = self.date
         }
     }
-    
-    var startingFrame: CGRect!
-    var endingFrame: CGRect!
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) && self.addButton.isHidden {
@@ -152,6 +179,12 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.layer.masksToBounds = false
         
         cell.dateLabel.text = timeArray[indexPath.row]
+        if taskIsNull == true {
+            cell.taskCountLabel.text = "0"
+        } else {
+            cell.taskCountLabel.text = String(addresses.count)
+//            print("hoge",timeArray.count)
+        }
         cell.configureCell(contentArray: addresses, date: timeArray[indexPath.row])
         
         return cell
@@ -171,7 +204,7 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 15, left: 10, bottom: 0, right: 10)
+        return UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -181,7 +214,7 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func buttonImage() {
         addButton.layer.cornerRadius = 35
         addButton.layer.shadowOpacity = 0.4
-//        addButton.layer.shadowRadius = 5.0
+        //        addButton.layer.shadowRadius = 5.0
         addButton.layer.shadowColor = UIColor.black.cgColor
         addButton.layer.shadowOffset = CGSize(width: 0, height: 0)
         addButton.layer.masksToBounds = false

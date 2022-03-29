@@ -15,12 +15,15 @@ class HomeInnerCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 2
+//        HomeInnerCollectionViewCell.collectionViewLayout = layout
         label.lineBreakMode = .byWordWrapping
-        self.layer.cornerRadius = 4
+        self.layer.cornerRadius = 5.28
         self.uiImage()
     }
     
     func uiImage() {
-        todoLabel.layer.cornerRadius = 4
+        todoLabel.layer.cornerRadius = 5.28
     }
 }

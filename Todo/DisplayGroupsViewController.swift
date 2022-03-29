@@ -129,9 +129,9 @@ extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
         cell.layer.cornerRadius = 12
-        cell.layer.shadowOpacity = 0.4 // 影の濃さ
+        cell.layer.shadowOpacity = 0.25 // 影の濃さ
         cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.layer.masksToBounds = false
         cell.groupName.text = addresses[indexPath.row]["roomName"] as! String
         
@@ -150,6 +150,10 @@ extension DisplayGroupsViewController: UICollectionViewDelegate, UICollectionVie
         let cellHeight: CGFloat = 80
         return CGSize(width: cellWidth, height: cellHeight)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

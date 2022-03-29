@@ -11,14 +11,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InnerCell" id="gTV-IL-0wX" customClass="InnerCollectionViewCell" customModule="Todo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJT-Gj-bfC">
-                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="63" id="MlF-yM-dYe"/>
+                            <constraint firstAttribute="width" constant="63" id="Qjw-Wt-hbJ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -27,15 +31,13 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="PJT-Gj-bfC" secondAttribute="trailing" id="KqH-h8-o7h"/>
-                <constraint firstItem="PJT-Gj-bfC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="brT-c8-wnk"/>
-                <constraint firstItem="PJT-Gj-bfC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mcc-G5-sYl"/>
-                <constraint firstAttribute="bottom" secondItem="PJT-Gj-bfC" secondAttribute="bottom" id="xsq-Tp-Kp1"/>
+                <constraint firstItem="PJT-Gj-bfC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="483-Fs-fBI"/>
+                <constraint firstItem="PJT-Gj-bfC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bDE-cS-1UD"/>
             </constraints>
             <connections>
                 <outlet property="todoLabel" destination="PJT-Gj-bfC" id="ik7-pK-ky0"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="81.696428571428569"/>
+            <point key="canvasLocation" x="136.95652173913044" y="81.361607142857139"/>
         </collectionViewCell>
     </objects>
 </document>
