@@ -18,7 +18,7 @@ class MakeRoomViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var roomNameTextField: UITextField!
     @IBOutlet weak var roomNumberTextField: UITextField!
-    @IBOutlet weak var overViewText: UITextField!
+//    @IBOutlet weak var overViewText: UITextField!
     
     let db = Firebase.Firestore.firestore()
     let storageRef = Storage.storage().reference(forURL: "gs://todo-c7ff6.appspot.com")
@@ -71,12 +71,12 @@ class MakeRoomViewController: UIViewController {
         
         //emailTextField
         for textFieldImage in textFieldImage {
-            textFieldImage.layer.cornerRadius = 20
-//            textFieldImage.backgroundColor = UIColor.white
+            textFieldImage.layer.cornerRadius = 24
+            textFieldImage.backgroundColor = UIColor.white
             textFieldImage.layer.borderWidth = 1
             textFieldImage.layer.borderColor = Purple.cgColor
-            textFieldImage.layer.shadowOpacity = 0.5
-            textFieldImage.layer.shadowColor = UIColor.gray.cgColor
+            textFieldImage.layer.shadowOpacity = 0.25
+            textFieldImage.layer.shadowColor = UIColor.black.cgColor
             textFieldImage.layer.shadowOffset = CGSize(width: 1, height: 1)
             textFieldImage.layer.masksToBounds = false
             let leftPadding = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))

@@ -17,6 +17,8 @@ class DateTodoViewController: UIViewController {
     var addresses: [[String : Any]] = []
     var date = String()
     var taskArray: [[String : Any]] = []
+    var completeArray: [[String : Any]] = []
+    var isComplete = Bool()
     
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
@@ -28,7 +30,7 @@ class DateTodoViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "InnerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "InnerCell")
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 15/255, green: 22/255, blue: 51/255, alpha: 1.0)
         
     }
     
@@ -43,6 +45,8 @@ class DateTodoViewController: UIViewController {
             let contentDate = content["day"] as! String
             if contentDate == date {
                 taskArray.append(content)
+            } else if contentDate == date && isComplete == true{
+                completeArray.append(content)
             }
         }
         collectionView.reloadData()
@@ -52,7 +56,11 @@ class DateTodoViewController: UIViewController {
 extension DateTodoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        taskArray.count
+        //        taskArray.count
+        switch isComplete{
+        case true: return completeArray.count
+        case false: return taskArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,41 +76,10 @@ extension DateTodoViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let actionProvider: ([UIMenuElement]) -> UIMenu? = { _ in
-//            let share = UIAction(title: "delete", image: UIImage(systemName: "trash"), identifier: UIAction.Identifier(rawValue: "trash")) { _ in
-//                self.deletItem(indexPath: indexPath)
-//            }
-////            return UIMenu(title: "Edit..", image: nil, identifier: nil, children: [delete, share])
-//        }
-//    }
-//    func deletItem(indexPath: IndexPath){
-//        let selectedDocID = addresses[indexPath.row]["documentID"] as! String
-//        guard let user = user else{ return }
-//        db.collection("users")
-//            .document(user.uid)
-//            .collection("tasks")
-//            .document(selectedDocID)
-//            .delete(){err in
-//                if let err = err {
-//                    print("Error removing document: \(err)")
-//                } else {
-//                    print("Document successfully removed!")
-//                    self.taskArray.remove(at: indexPath.row)
-//                    self.collectionView.reloadData()
-//
-//                    if self.taskArray.isEmpty {
-//                        let preNC = self.navigationController!
-//                        let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! MyTodoViewController
-//
-//                        preVC.timeArray.removeAll(where: {$0 == self.date})
-//                        preVC.OuterCollectionView.reloadData()
-//                    }
-//                }
-//            }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 63, height: 63)
+        return CGSize(width: 65, height: 65)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -125,11 +102,17 @@ extension DateTodoViewController: UICollectionViewDelegate, UICollectionViewData
                     .document(selectedDocID)
                     .setData(self.taskArray[indexPath.row], merge: true)
                 
-//                self.completeArray.append(self.taskArray[indexPath.row])
-//                self.taskArray.remove(at: indexPath.row)
+                self.completeArray.append(self.taskArray[indexPath.row])
+                self.taskArray.remove(at: indexPath.row)
             }
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: UIAction.Identifier(rawValue: "delete")) {[self] _ in
-                let selectedDocID = self.taskArray[indexPath.row]["documentID"] as! String
+                var selectedDocID = String()
+                switch isComplete{
+                case true:
+                    selectedDocID = self.completeArray[indexPath.row]["documentID"] as! String
+                case false:
+                    selectedDocID = self.taskArray[indexPath.row]["documentID"] as! String
+                }
                 guard let user = self.user else { return }
                 self.db.collection("users")
                     .document(user.uid)
@@ -137,12 +120,14 @@ extension DateTodoViewController: UICollectionViewDelegate, UICollectionViewData
                     .document(selectedDocID)
                     .delete(){ err in
                         if let err = err {
-                            
                         } else {
-                            self.taskArray.remove(at: indexPath.row)
+                            switch self.isComplete{
+                            case true: self.completeArray.remove(at: indexPath.row)
+                            case false: self.taskArray.remove(at: indexPath.row)
+                            }
+//                            self.taskArray.remove(at: indexPath.row)
                             self.collectionView.reloadData()
-                            
-                            if self.taskArray.isEmpty {
+                            if self.taskArray.isEmpty || self.completeArray.isEmpty {
                                 let preNC = self.navigationController!
                                 let preVC = preNC.viewControllers[preNC.viewControllers.count - 2] as! MyTodoViewController
                                 

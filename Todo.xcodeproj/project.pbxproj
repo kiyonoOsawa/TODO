@@ -31,6 +31,9 @@
 		7DECB0BAC8350BB2277B0333 /* Pods_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52B6F50D14E73170BBDEDD9 /* Pods_Todo.framework */; };
 		AEEF58130B16C582B63BC536 /* Pods_Todo_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0766B3E95E94F7F561E30DEF /* Pods_Todo_TodoUITests.framework */; };
 		BD372A9B47034CA9912346D6 /* Pods_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C117EF4A4E30A111DF68BEE /* Pods_TodoTests.framework */; };
+		CE0CA482280AF9C50043FE6D /* ToDoMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CA481280AF9C50043FE6D /* ToDoMenuViewController.swift */; };
+		CE0CA485280AFAB50043FE6D /* MenuTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CA483280AFAB50043FE6D /* MenuTabTableViewCell.swift */; };
+		CE0CA486280AFAB50043FE6D /* MenuTabTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0CA484280AFAB50043FE6D /* MenuTabTableViewCell.xib */; };
 		CE290DD227B8A9FA0027D64F /* DateTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE290DD127B8A9FA0027D64F /* DateTodoViewController.swift */; };
 		CE398C1B2793F620005BBFA7 /* MyTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE398C1A2793F620005BBFA7 /* MyTodoViewController.swift */; };
 		CE398C212793F7DD005BBFA7 /* MakeTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE398C202793F7DD005BBFA7 /* MakeTaskViewController.swift */; };
@@ -97,6 +100,9 @@
 		AB9B6175E2CFBFB9E74BF969 /* Pods-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.release.xcconfig"; path = "Target Support Files/Pods-Todo/Pods-Todo.release.xcconfig"; sourceTree = "<group>"; };
 		BF4B3BE3C50731A73526C919 /* Pods-TodoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoTests.release.xcconfig"; path = "Target Support Files/Pods-TodoTests/Pods-TodoTests.release.xcconfig"; sourceTree = "<group>"; };
 		CA703CD47C8C7F7408A27503 /* Pods-TodoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoTests.debug.xcconfig"; path = "Target Support Files/Pods-TodoTests/Pods-TodoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE0CA481280AF9C50043FE6D /* ToDoMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoMenuViewController.swift; sourceTree = "<group>"; };
+		CE0CA483280AFAB50043FE6D /* MenuTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabTableViewCell.swift; sourceTree = "<group>"; };
+		CE0CA484280AFAB50043FE6D /* MenuTabTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTabTableViewCell.xib; sourceTree = "<group>"; };
 		CE290DD127B8A9FA0027D64F /* DateTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTodoViewController.swift; sourceTree = "<group>"; };
 		CE398C162793F607005BBFA7 /* Todo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Todo-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE398C1A2793F620005BBFA7 /* MyTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoViewController.swift; sourceTree = "<group>"; };
@@ -179,18 +185,21 @@
 				6C06539C2740AD7B0068508C /* SceneDelegate.swift */,
 				6C06539E2740AD7B0068508C /* ViewController.swift */,
 				CEA045DF279B9CED00F61993 /* TabBarViewController.swift */,
-				6C73B3482740B6E000BB8E27 /* MakeRoomViewController.swift */,
-				6C73B34C2740D61B00BB8E27 /* DisplayGroupsViewController.swift */,
-				6CB18C862740E80300C5F54F /* ChatViewController.swift */,
 				6C63817E2765A2A20087F58C /* MakeUserViewController.swift */,
 				6C61C65A2765C91B0062028C /* SignInViewController.swift */,
-				CE76B02427CB211600F2532F /* ProfileViewController.swift */,
+				CE0CA481280AF9C50043FE6D /* ToDoMenuViewController.swift */,
 				CE398C1A2793F620005BBFA7 /* MyTodoViewController.swift */,
-				CE290DD127B8A9FA0027D64F /* DateTodoViewController.swift */,
 				CE398C202793F7DD005BBFA7 /* MakeTaskViewController.swift */,
+				6C73B34C2740D61B00BB8E27 /* DisplayGroupsViewController.swift */,
+				CE290DD127B8A9FA0027D64F /* DateTodoViewController.swift */,
+				6CB18C862740E80300C5F54F /* ChatViewController.swift */,
+				6C73B3482740B6E000BB8E27 /* MakeRoomViewController.swift */,
+				CE76B02427CB211600F2532F /* ProfileViewController.swift */,
 				6C0653A02740AD7B0068508C /* Main.storyboard */,
 				6C0653A62740AD7E0068508C /* Assets.xcassets */,
 				6C73B34A2740D32000BB8E27 /* GoogleService-Info.plist */,
+				CE0CA484280AFAB50043FE6D /* MenuTabTableViewCell.xib */,
+				CE0CA483280AFAB50043FE6D /* MenuTabTableViewCell.swift */,
 				6C0653A82740AD7E0068508C /* LaunchScreen.storyboard */,
 				CEC083C627A659E2003B42BA /* InnerCollectionViewCell.swift */,
 				CEC083C727A659E2003B42BA /* InnerCollectionViewCell.xib */,
@@ -356,6 +365,7 @@
 				6CB18C852740E73000C5F54F /* ChatTableViewCell.xib in Resources */,
 				6C0653A72740AD7E0068508C /* Assets.xcassets in Resources */,
 				6C73B34B2740D32000BB8E27 /* GoogleService-Info.plist in Resources */,
+				CE0CA486280AFAB50043FE6D /* MenuTabTableViewCell.xib in Resources */,
 				6C0653A22740AD7B0068508C /* Main.storyboard in Resources */,
 				6C73B3472740B5C800BB8E27 /* CollectionViewCell.xib in Resources */,
 				6CEB06F127534E8F0067AA74 /* InputAccesoryView.xib in Resources */,
@@ -490,6 +500,7 @@
 			files = (
 				CEA045E0279B9CED00F61993 /* TabBarViewController.swift in Sources */,
 				6C73B3462740B5C800BB8E27 /* CollectionViewCell.swift in Sources */,
+				CE0CA482280AF9C50043FE6D /* ToDoMenuViewController.swift in Sources */,
 				CE290DD227B8A9FA0027D64F /* DateTodoViewController.swift in Sources */,
 				CE398C1B2793F620005BBFA7 /* MyTodoViewController.swift in Sources */,
 				6C63817F2765A2A30087F58C /* MakeUserViewController.swift in Sources */,
@@ -497,6 +508,7 @@
 				CE398C212793F7DD005BBFA7 /* MakeTaskViewController.swift in Sources */,
 				6CEB06F327534FD70067AA74 /* InputAccesoryView.swift in Sources */,
 				6C06539F2740AD7B0068508C /* ViewController.swift in Sources */,
+				CE0CA485280AFAB50043FE6D /* MenuTabTableViewCell.swift in Sources */,
 				CE76B02527CB211600F2532F /* ProfileViewController.swift in Sources */,
 				6C06539B2740AD7B0068508C /* AppDelegate.swift in Sources */,
 				6C06539D2740AD7B0068508C /* SceneDelegate.swift in Sources */,

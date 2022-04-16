@@ -15,7 +15,7 @@ import FirebaseAuth
 class DisplayGroupsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var logOutButton: UIButton!
+//    @IBOutlet weak var logOutButton: UIButton!
     
     let db = Firebase.Firestore.firestore()
     let auth = Auth.auth()
@@ -28,7 +28,10 @@ class DisplayGroupsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        collectionView.dataSource = self
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 30
+        collectionView.collectionViewLayout = layout
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,19 +77,6 @@ class DisplayGroupsViewController: UIViewController, UITextFieldDelegate {
             print("groupId: \(groupId)")
         }
     }
-    
-//    @IBAction func tappedLogOut() {
-//
-//        let firebaseAuth = Auth.auth()
-//        do {
-//            try firebaseAuth.signOut()
-//            let nextVC = storyboard?.instantiateViewController(withIdentifier: "firstView")
-//            nextVC?.modalPresentationStyle = .fullScreen
-//            self.present(nextVC!, animated: true, completion: nil)
-//        } catch let signOutError as NSError {
-//            print("Error signing out: %@", signOutError)
-//        }
-//    }
     
     func addGroupAlert(indexPath: IndexPath){
         

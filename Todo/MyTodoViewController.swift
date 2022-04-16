@@ -16,16 +16,20 @@ class MyTodoViewController: UIViewController {
     
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var OuterCollectionView: UICollectionView!
+    @IBOutlet weak var menuButton: UIButton!
     
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
     var viewWidth: CGFloat = 0.0
     var timeArray = [String]()
     var addresses: [[String : Any]] = []
+    var completeArray: [[String : Any]] = []
+    var todoArray: [[String : Any]] = []
     var date = String()
     var startingFrame: CGRect!
     var endingFrame: CGRect!
     var taskIsNull: Bool!
+    var isComplete: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,48 +41,13 @@ class MyTodoViewController: UIViewController {
         OuterCollectionView.allowsSelection = true
         OuterCollectionView.isUserInteractionEnabled = true
         
-
+        
     }
-    
-    func dayTaskIsNull() {
-        
-        let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat =  "yyyy年MM月dd日"
-        print("わかりやすい文字列",dateFormatter.string(from: now))
-        let day = dateFormatter.string(from: now)
-        let content = ""
-        let rgbRed = CGFloat(0.0)
-        let rgbGreen = CGFloat(0.0)
-        let rgbBlue = CGFloat(0.0)
-        let alpha = CGFloat(0.0)
-        let isComplete = false
-        
-//        let date: Date = Date ()
-        self.timeArray.append(dateFormatter.string(from: now))
-        let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
-        self.timeArray = orderedSet.array as! [String]
-        
-        self.addresses.append(
-            ["time": date,
-             "day": day,
-             "content": content,
-             "redcolor": rgbRed,
-             "greencolor": rgbGreen,
-             "bluecolor": rgbBlue,
-             "alpha": alpha,
-             "documentID": nil,
-             "isComplete": isComplete
-            ]
-        )
-        self.OuterCollectionView.reloadData()
-        taskIsNull = false
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
-        taskIsNull = false
         
+        taskIsNull = false
         print("アッピアー")
+        presentingViewController?.beginAppearanceTransition(false, animated: animated)
         super.viewWillAppear(animated)
         self.OuterCollectionView.reloadData()
         
@@ -109,14 +78,14 @@ class MyTodoViewController: UIViewController {
                     let alpha = doc.data()["alpha"] as! CGFloat
                     let isComplete = doc.data()["isComplete"] as! Bool
                     
-                    let date: Date = timeStamp.dateValue()
+                    let time: Date = timeStamp.dateValue()
                     
                     self.timeArray.append(day)
                     let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
                     self.timeArray = orderedSet.array as! [String]
                     
                     self.addresses.append(
-                        ["time": date,
+                        ["time": time,
                          "day": day,
                          "content": content,
                          "redcolor": rgbRed,
@@ -127,11 +96,104 @@ class MyTodoViewController: UIViewController {
                          "isComplete": isComplete
                         ]
                     )
+                    switch isComplete {
+                    case true:
+                        self.completeArray.append(
+                            ["day": day,
+                             "time": time,
+                             "content": content,
+                             "red": rgbRed,
+                             "blue": rgbBlue,
+                             "green": rgbGreen,
+                             "alpha": alpha,
+                             "documentID": doc.documentID,
+                             "isComplete": isComplete]
+                        )
+                        self.configureTimeArray()
+                        
+                    case false:
+                        self.todoArray.append(
+                            ["day": day,
+                             "time": time,
+                             "content": content,
+                             "red": rgbRed,
+                             "blue": rgbBlue,
+                             "green": rgbGreen,
+                             "alpha": alpha,
+                             "documentID": doc.documentID,
+                             "isComplete": isComplete
+                            ]
+                        )
+                        self.configureTimeArray()
+                    }
                     print("データ取り出し\(doc)")
                 }
                 self.OuterCollectionView.reloadData()
             }
     }
+    
+    func configureTimeArray() {
+        timeArray.removeAll()
+        switch isComplete{
+        case true:
+            for content in completeArray{
+                let contentTime = content["day"] as! String
+                timeArray.append(contentTime)
+                let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
+                self.timeArray = orderedSet.array as! [String]
+            }
+        case false:
+            for content in todoArray{
+                let contentTime = content["day"] as! String
+                timeArray.append(contentTime)
+                let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
+                self.timeArray = orderedSet.array as! [String]
+            }
+        }
+    }
+    
+    @IBAction func tappedAddButton() {
+        self.performSegue(withIdentifier: "toMakeTask", sender: nil)
+    }
+    
+    @IBAction func tappedMenuButton() {
+        self.performSegue(withIdentifier: "toMenu", sender: nil)
+    }
+    
+    func dayTaskIsNull() {
+        
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "yyyy年MM月dd日"
+        print("わかりやすい文字列",dateFormatter.string(from: now))
+        let day = dateFormatter.string(from: now)
+        let content = ""
+        let rgbRed = CGFloat(0.0)
+        let rgbGreen = CGFloat(0.0)
+        let rgbBlue = CGFloat(0.0)
+        let alpha = CGFloat(0.0)
+        let isComplete = false
+        
+        self.timeArray.append(dateFormatter.string(from: now))
+        let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
+        self.timeArray = orderedSet.array as! [String]
+        
+        self.addresses.append(
+            ["time": time,
+             "day": day,
+             "content": content,
+             "redcolor": rgbRed,
+             "greencolor": rgbGreen,
+             "bluecolor": rgbBlue,
+             "alpha": alpha,
+             "documentID": nil,
+             "isComplete": isComplete
+            ]
+        )
+        self.OuterCollectionView.reloadData()
+        taskIsNull = false
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDateTodo"{
             let vc = segue.destination as! DateTodoViewController
@@ -172,8 +234,10 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = OuterCollectionView.dequeueReusableCell(withReuseIdentifier: "OuterCell", for: indexPath) as! OuterCollectionViewCell
         
+        print("---画面B cellForRowAt:\(#function)")
+        
+        let cell = OuterCollectionView.dequeueReusableCell(withReuseIdentifier: "OuterCell", for: indexPath) as! OuterCollectionViewCell
         cell.layer.cornerRadius = 12
         cell.layer.shadowOpacity = 0.25
         cell.layer.shadowColor = UIColor.black.cgColor
@@ -185,11 +249,18 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.taskCountLabel.text = "0"
             print("こことおった")
         } else {
-            cell.taskCountLabel.text = String(addresses.count)
-//            print("hoge",timeArray.count)
+            let filList = addresses.filter{$0["day"] as! String == timeArray[indexPath.row]}
+            cell.taskCountLabel.text = String(filList.count)
         }
-        cell.configureCell(contentArray: addresses, date: timeArray[indexPath.row])
-        
+        switch isComplete {
+        case true:
+            cell.configureCell(contentArray: completeArray, date: timeArray[indexPath.row])
+            self.OuterCollectionView.reloadData()
+        case false:
+            cell.configureCell(contentArray: todoArray, date: timeArray[indexPath.row])
+            self.OuterCollectionView.reloadData()
+        }
+        //        cell.configureCell(contentArray: addresses, date: timeArray[indexPath.row])
         return cell
     }
     
@@ -215,12 +286,8 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func buttonImage() {
-        addButton.layer.cornerRadius = 35
-        addButton.layer.shadowOpacity = 0.4
-        //        addButton.layer.shadowRadius = 5.0
-        addButton.layer.shadowColor = UIColor.black.cgColor
-        addButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-        addButton.layer.masksToBounds = false
+        addButton.imageView?.contentMode = .scaleAspectFill
+        addButton.contentHorizontalAlignment = .fill
+        addButton.contentVerticalAlignment = .fill
     }
-    
 }

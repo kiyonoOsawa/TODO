@@ -39,7 +39,7 @@ class ChatViewController: UIViewController {
         chatTableView.separatorStyle = .none
         //tabbarを非表示にする
         self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 15/255, green: 22/255, blue: 51/255, alpha: 1.0)
         
         
     }

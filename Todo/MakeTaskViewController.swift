@@ -46,7 +46,7 @@ class MakeTaskViewController: UIViewController, UIColorPickerViewControllerDeleg
         timeArray = orderedSet.array as! [String]
         //        userDefaults.set(timeArray, forKey: "time")
         
-        datePicker
+//        datePicker
         
         let user = user
         guard let user = user else {return}

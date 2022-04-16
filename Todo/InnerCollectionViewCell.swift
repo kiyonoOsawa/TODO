@@ -16,12 +16,12 @@ class InnerCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         label.lineBreakMode = .byWordWrapping
-        self.layer.cornerRadius = 11.68
+        self.layer.cornerRadius = 10.4
         self.uiImage()
     }
     
     func uiImage() {
-        todoLabel.layer.cornerRadius = 11.68
+        todoLabel.layer.cornerRadius = 10.4
     }
 
 }

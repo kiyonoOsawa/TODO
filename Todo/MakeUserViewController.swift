@@ -143,6 +143,7 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
             leftPadding.backgroundColor = UIColor.clear
             textFieldImage.leftView = leftPadding
             textFieldImage.leftViewMode = .always
+            userProfileButton.layer.cornerRadius = 50
         }
         signUpButton.layer.cornerRadius = 24
         

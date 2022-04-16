@@ -61,7 +61,7 @@ class ChatTableViewCell: UITableViewCell {
         classmateTextView.layer.cornerRadius = 12
         classmateTextView.layer.shadowOpacity = 0.25
         classmateTextView.layer.shadowColor = UIColor.black.cgColor
-        classmateTextView.layer.shadowOffset = CGSize(width: 2, height: 3)
+        classmateTextView.layer.shadowOffset = CGSize(width: 1, height: 1)
         classmateTextView.layer.masksToBounds = false
         //textviewの編集可否
         classmateTextView.isEditable = false

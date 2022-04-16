@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJT-Gj-bfC">
-                        <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
+                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="63" id="MlF-yM-dYe"/>
-                            <constraint firstAttribute="width" constant="63" id="Qjw-Wt-hbJ"/>
+                            <constraint firstAttribute="height" constant="65" id="MlF-yM-dYe"/>
+                            <constraint firstAttribute="width" constant="65" id="Qjw-Wt-hbJ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" red="0.058823529409999999" green="0.086274509799999996" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

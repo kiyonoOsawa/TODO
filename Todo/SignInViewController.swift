@@ -20,6 +20,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var profileImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +67,7 @@ class SignInViewController: UIViewController {
             leftPadding.backgroundColor = UIColor.clear
             textFieldImage.leftView = leftPadding
             textFieldImage.leftViewMode = .always
+            profileImage.layer.cornerRadius = 50
         }
         
         logInButton.layer.cornerRadius = 24

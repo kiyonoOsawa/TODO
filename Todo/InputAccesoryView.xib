@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,21 +21,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Txh-Od-uW8">
-                    <rect key="frame" x="371" y="32.5" width="23" height="25"/>
+                    <rect key="frame" x="371" y="33.5" width="23" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="23" id="8mH-Lg-YJn"/>
-                        <constraint firstAttribute="height" constant="25" id="RnE-O3-0uK"/>
+                        <constraint firstAttribute="height" constant="23" id="RnE-O3-0uK"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                    <color key="tintColor" name="Purple"/>
+                    <color key="tintColor" red="0.14117647707462311" green="0.2078431248664856" blue="0.47058826684951782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Button" image="paperplane.fill" catalog="system"/>
                     <connections>
                         <action selector="tappedSendMessageButton:" destination="-1" eventType="touchUpInside" id="EsQ-m6-gVk"/>
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7m9-Q7-gZ4">
-                    <rect key="frame" x="20" y="25" width="331" height="40"/>
+                    <rect key="frame" x="20" y="29.5" width="331" height="31"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="HWv-cX-0oR"/>
+                    </constraints>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -45,12 +47,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Txh-Od-uW8" secondAttribute="trailing" constant="20" id="2g5-kZ-B4n"/>
-                <constraint firstItem="Txh-Od-uW8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32.5" id="9GD-A5-aQY"/>
+                <constraint firstItem="Txh-Od-uW8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33.5" id="Fc3-2N-ssb"/>
+                <constraint firstItem="7m9-Q7-gZ4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29.5" id="KuN-3b-pud"/>
                 <constraint firstItem="7m9-Q7-gZ4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="NPL-7n-Gvy"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7m9-Q7-gZ4" secondAttribute="bottom" constant="25" id="dO4-cx-nzc"/>
-                <constraint firstItem="7m9-Q7-gZ4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="gww-Zv-6a2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Txh-Od-uW8" secondAttribute="bottom" constant="33.5" id="gIZ-2q-sj1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7m9-Q7-gZ4" secondAttribute="bottom" constant="29.5" id="jnc-Xf-ujX"/>
                 <constraint firstItem="Txh-Od-uW8" firstAttribute="leading" secondItem="7m9-Q7-gZ4" secondAttribute="trailing" constant="20" id="lp7-Za-HjX"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Txh-Od-uW8" secondAttribute="bottom" constant="32.5" id="yZt-aX-hwm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="34.782608695652179" y="84.375"/>
@@ -58,9 +60,6 @@
     </objects>
     <resources>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
-        <namedColor name="Purple">
-            <color red="0.62352943420410156" green="0.4627450704574585" blue="0.92156863212585449" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
