@@ -78,6 +78,7 @@ extension ToDoMenuViewController: UITableViewDelegate, UITableViewDataSource {
         let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! MyTodoViewController
         preVC.isComplete = self.isComplete
         preVC.configureTimeArray()
+        preVC.OuterCollectionView.reloadData()
         
         UIView.animate(withDuration: 0.2,
                        delay: 0,

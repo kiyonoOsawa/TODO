@@ -61,6 +61,8 @@ class MyTodoViewController: UIViewController {
                 guard let querySnapshot = QuerySnapshot else {return}
                 
                 self.addresses.removeAll()
+                self.completeArray.removeAll()
+                self.todoArray.removeAll()
                 
                 if querySnapshot.documents.count == Optional(0) {
                     self.dayTaskIsNull()
@@ -199,6 +201,7 @@ class MyTodoViewController: UIViewController {
             let vc = segue.destination as! DateTodoViewController
             vc.addresses = self.addresses
             vc.date = self.date
+            vc.isComplete = self.isComplete
         }
     }
     

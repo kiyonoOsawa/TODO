@@ -22,7 +22,7 @@ class OuterCollectionViewCell: UICollectionViewCell {
     
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
-    var taskArray: [[String:Any]] = []
+    var taskArray: [[String : Any]] = []
     var day = String()
     weak var delegate: OuterCollectionViewCellDelegate?
     
@@ -39,7 +39,7 @@ class OuterCollectionViewCell: UICollectionViewCell {
         HomeCollectionView.register(UINib(nibName: "HomeInnerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "InnerCell")
     }
     
-    func configureCell(contentArray: [[String:Any]], date: String) {
+    func configureCell(contentArray: [[String : Any]], date: String) {
         taskArray.removeAll()
         for content in contentArray{
             let contentDate = content["day"] as! String
@@ -67,9 +67,9 @@ extension OuterCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = HomeCollectionView.dequeueReusableCell(withReuseIdentifier: "InnerCell", for: indexPath) as! HomeInnerCollectionViewCell
         
-        let rgbRed = taskArray[indexPath.row]["redcolor"] as! CGFloat
-        let rgbBlue = taskArray[indexPath.row]["bluecolor"] as! CGFloat
-        let rgbGreen = taskArray[indexPath.row]["greencolor"] as! CGFloat
+        let rgbRed = taskArray[indexPath.row]["red"] as! CGFloat
+        let rgbBlue = taskArray[indexPath.row]["blue"] as! CGFloat
+        let rgbGreen = taskArray[indexPath.row]["green"] as! CGFloat
         let alpha = taskArray[indexPath.row]["alpha"] as! CGFloat
         
         cell.backgroundColor = UIColor(red: rgbRed, green: rgbGreen, blue: rgbBlue, alpha: alpha)
