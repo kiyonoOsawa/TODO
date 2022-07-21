@@ -13,9 +13,11 @@ import FirebaseAuth
 class DateTodoViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var addresses: [[String : Any]] = []
     var date = String()
+    var timeArray = [String]()
     var taskArray: [[String : Any]] = []
     var completeArray: [[String : Any]] = []
     var isComplete = Bool()

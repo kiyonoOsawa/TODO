@@ -13,8 +13,9 @@ class ToDoMenuViewController: UIViewController {
     
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var menuLabelView: UIView!
     
-    var isComplete: Bool = true
+    var isComplete: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class ToDoMenuViewController: UIViewController {
                        options: .curveEaseOut,
                        animations: {self.menuView.layer.position.x = menuPos.x},
                        completion: {bool in})
+        self.design()
     }
     //メニュー以外をタップしたら元に戻るようにする
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,6 +51,19 @@ class ToDoMenuViewController: UIViewController {
             }
         }
     }
+    
+    func design() {
+        //下に線をつける
+        let underBorder = CALayer()
+        underBorder.frame = CGRect(x: 0, y: menuLabelView.frame.height, width: menuLabelView.frame.width, height: 1.0)
+        underBorder.backgroundColor = UIColor.gray.cgColor
+        menuLabelView.layer.addSublayer(underBorder)
+        //menuViewの影
+        menuView.layer.shadowOpacity = 0.25
+        menuView.layer.shadowColor = UIColor.black.cgColor
+        menuView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        menuView.layer.masksToBounds = false
+    }
 }
 
 extension ToDoMenuViewController: UITableViewDelegate, UITableViewDataSource {
@@ -56,6 +71,7 @@ extension ToDoMenuViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuTabTableViewCell
         let menuArray: [String] = ["完了", "未完了"]
         cell.titleLabel.text = menuArray[indexPath.row]
+        
         return cell
     }
     
@@ -66,8 +82,8 @@ extension ToDoMenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //どのcellを選択したか判別して、isCompleteを切り替える
         switch indexPath.row {
-        case 0: isComplete = true
-        case 1: isComplete = false
+        case 0: isComplete = false
+        case 1: isComplete = true
         default:
             print("error")
         }
@@ -87,6 +103,10 @@ extension ToDoMenuViewController: UITableViewDelegate, UITableViewDataSource {
                        completion: {bool in self.dismiss(animated: true, completion: nil)})
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
 }

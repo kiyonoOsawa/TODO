@@ -33,7 +33,7 @@ class MyTodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.buttonImage()
+        self.design()
         viewWidth = view.frame.width
         OuterCollectionView.delegate = self
         OuterCollectionView.dataSource = self
@@ -44,7 +44,6 @@ class MyTodoViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        
         taskIsNull = false
         print("アッピアー")
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
@@ -99,7 +98,8 @@ class MyTodoViewController: UIViewController {
                         ]
                     )
                     switch isComplete {
-                    case true:
+                    case false:
+                        self.navigationItem.title = "未完了"
                         self.completeArray.append(
                             ["day": day,
                              "time": time,
@@ -111,9 +111,11 @@ class MyTodoViewController: UIViewController {
                              "documentID": doc.documentID,
                              "isComplete": isComplete]
                         )
+//                        self.navigationItem.title = "未完了"
                         self.configureTimeArray()
                         
-                    case false:
+                    case true:
+//                        self.navigationItem.title = "完了済"
                         self.todoArray.append(
                             ["day": day,
                              "time": time,
@@ -126,6 +128,7 @@ class MyTodoViewController: UIViewController {
                              "isComplete": isComplete
                             ]
                         )
+//                        self.navigationItem.title = "完了済"
                         self.configureTimeArray()
                     }
                     print("データ取り出し\(doc)")
@@ -137,15 +140,15 @@ class MyTodoViewController: UIViewController {
     func configureTimeArray() {
         timeArray.removeAll()
         switch isComplete{
-        case true:
-            for content in completeArray{
+        case false:
+            for content in todoArray{
                 let contentTime = content["day"] as! String
                 timeArray.append(contentTime)
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
                 self.timeArray = orderedSet.array as! [String]
             }
-        case false:
-            for content in todoArray{
+        case true:
+            for content in completeArray{
                 let contentTime = content["day"] as! String
                 timeArray.append(contentTime)
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: self.timeArray)
@@ -256,11 +259,11 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.taskCountLabel.text = String(filList.count)
         }
         switch isComplete {
-        case true:
-            cell.configureCell(contentArray: completeArray, date: timeArray[indexPath.row])
-            self.OuterCollectionView.reloadData()
         case false:
             cell.configureCell(contentArray: todoArray, date: timeArray[indexPath.row])
+            self.OuterCollectionView.reloadData()
+        case true:
+            cell.configureCell(contentArray: completeArray, date: timeArray[indexPath.row])
             self.OuterCollectionView.reloadData()
         }
         //        cell.configureCell(contentArray: addresses, date: timeArray[indexPath.row])
@@ -280,7 +283,7 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
         self.performSegue(withIdentifier: "toDateTodo", sender: nil)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,  section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 15, left: 10, bottom: 10, right: 10)
     }
     
@@ -288,9 +291,11 @@ extension MyTodoViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return 20
     }
     
-    func buttonImage() {
+    func design() {
         addButton.imageView?.contentMode = .scaleAspectFill
         addButton.contentHorizontalAlignment = .fill
         addButton.contentVerticalAlignment = .fill
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 }

@@ -128,7 +128,6 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
         
         let Purple = UIColor(named: "Purple")
         guard let Purple = Purple else { return }
-        
         //emailTextField
         for textFieldImage in textFieldImage {
             textFieldImage.layer.cornerRadius = 24
@@ -146,12 +145,10 @@ class MakeUserViewController: UIViewController, UITextFieldDelegate {
             userProfileButton.layer.cornerRadius = 50
         }
         signUpButton.layer.cornerRadius = 24
-        
     }
 }
 
 extension MakeUserViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // サイズなどを変えた際に受け取るイメージ
         if let image = info[.editedImage] as? UIImage{
